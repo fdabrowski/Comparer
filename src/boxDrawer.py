@@ -1,4 +1,4 @@
-import cv2
+from cv2 import cv2
 
 font = cv2.QT_FONT_NORMAL
 fontScale = 1
@@ -15,9 +15,9 @@ BICYCLE_COLOR = (255, 255, 255)
 def drawPredictedObjects(result, img):
     for box in result:
         cv2.rectangle(img,
-                      (box['topleft']['x'], box['topleft']['y']),
-                      (box['bottomright']['x'], box['bottomright']['y']),
-                      setColorForClass(box['label']),
+                      (box.topleft_x, box.topleft_y),
+                      (box.downRight_x, box.downRight_y),
+                      BICYCLE_COLOR,
                       3)
 
 

@@ -15,13 +15,12 @@ class GroundTruthAdapter():
         if (os.path.isfile(filePath)):
             return open(filePath, 'r+')
 
-    def getFileContent(self):
+    def getBoundingBoxes(self):
         file = self.openLabelsFile()
-        boundingBoxesList = self.createBBList(file)
-        print(boundingBoxesList)
+        return self.createBBList(file)
 
     def createPath(self):
-        path = '../' + self.dirName + '/' + self.projectName + '/labels'
+        path = '../' +self.dirName + '/' + self.projectName + '/boxes'
         if (os.path.isdir(path)):
             return path
         else:
@@ -39,5 +38,5 @@ class GroundTruthAdapter():
         result = []
         bbList = self.getBBValues(file)
         for box in bbList:
-            result.append(BoundingBox(box[0], box[1], box[2], box[3], box[4]))
+            result.append(BoundingBox(int(box[0]), int(box[1]), int(box[2]), int(box[3]), box[4]))
         return result
