@@ -3,7 +3,7 @@ import os
 from src.BoundingBox import BoundingBox
 
 
-class GroundTruthAdapter():
+class GroundTruthReader():
     def __init__(self, projectName, fileName):
         self.fileName = fileName
         self.projectName = projectName

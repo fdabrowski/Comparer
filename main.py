@@ -4,7 +4,7 @@ import cv2
 import natsort
 import matplotlib.pyplot as plt
 from src.boxDrawer import drawPredictedObjects
-from src.groundTruthAdapter import GroundTruthAdapter
+from src.GroundTruthReader import GroundTruthReader
 
 GT_FRAMES = '../ground_truth_frames/traffic/frames'
 GT_BOXES = '../ground_truth_frames/traffic/boxes'
@@ -16,8 +16,10 @@ allBoundingBox = []
 #     gtAdapter = GroundTruthAdapter('traffic', fileName)
 #     allBoundingBox.append(gtAdapter.getBoundingBoxes())
 
+
+#
 imgcv = cv2.imread(GT_FRAMES +'/frame0.jpg')
-gtAdapter = GroundTruthAdapter('traffic', 'frame0.txt')
+gtAdapter = GroundTruthReader('traffic', 'frame0.txt')
 boundingBoxes = gtAdapter.getBoundingBoxes()
 drawPredictedObjects(boundingBoxes, imgcv)
 imgplot = plt.imshow(imgcv)
