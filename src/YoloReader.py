@@ -11,19 +11,15 @@ class YoloReader(FileReader):
         file = self.openBoxFile()
         return self.createBBList(file)
 
-    def getBBValues(self, file):
-        with open('data.txt') as json_file:
-            data = json.load(json_file)
-            for p in data['people']:
-                print('Name: ' + p['name'])
-                print('Website: ' + p['website'])
-                print('From: ' + p['from'])
-                print('')
-
-
     def createBBList(self, file):
-        result = []
-        bbList = self.getBBValues(file)
-        for box in bbList:
-            result.append(BoundingBox(int(box[0]), int(box[1]), int(box[2]), int(box[3]), box[4]))
-        return result
+            data = json.load(file)
+            result = []
+            for box in data:
+                result.append(
+                    BoundingBox(
+                        int(box['topleft']['x']),
+                        int(box['topleft']['y']),
+                        int(box['bottomright']['x']),
+                        int(box['bottomright']['y']),
+                        box['label']))
+            return result

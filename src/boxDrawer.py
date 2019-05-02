@@ -12,13 +12,13 @@ MOTOR_BIKE_COLOR = (255, 0, 0)
 BICYCLE_COLOR = (255, 255, 255)
 
 
-def drawPredictedObjects(result, img):
+def drawPredictedObjects(result, img, color, width):
     for box in result:
         cv2.rectangle(img,
                       (box.topleft_x, box.topleft_y),
                       (box.downRight_x, box.downRight_y),
-                      BICYCLE_COLOR,
-                      3)
+                      color,
+                      width)
 
 
 def showConfidence(result, img):

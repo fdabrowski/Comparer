@@ -1,12 +1,13 @@
 from os import listdir
 from os.path import isfile, join
-import cv2
-import natsort
-import matplotlib.pyplot as plt
 
-from src.YoloReader import YoloReader
-from src.boxDrawer import drawPredictedObjects
+import matplotlib.pyplot as plt
+import natsort
+
 from src.GroundTruthReader import GroundTruthReader
+from src.YoloReader import YoloReader
+from src.boxColors import BoxColors
+from src.boxDrawer import drawPredictedObjects
 
 GT_FRAMES = '../ground_truth_frames/traffic/frames'
 GT_BOXES = '../ground_truth_frames/traffic/boxes'
@@ -22,13 +23,13 @@ allBoundingBox = []
 #
 imgcv = cv2.imread(GT_FRAMES +'/frame0.jpg')
 
-# gtReader = GroundTruthReader('traffic', 'frame0.txt')
-# gtBoundingBoxes = gtReader.getBoundingBoxes()
-# drawPredictedObjects(gtBoundingBoxes, imgcv)
+gtReader = GroundTruthReader('traffic', 'frame0.txt')
+gtBoundingBoxes = gtReader.getBoundingBoxes()
+drawPredictedObjects(gtBoundingBoxes, imgcv, BoxColors.TRUCK_COLOR, 2)
 
 yoloReader = YoloReader('traffic', 'frame1.json')
 yoloBoundingBoxes = yoloReader.getBoundingBoxes()
-drawPredictedObjects(yoloBoundingBoxes, imgcv)
+drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.BICYCLE_COLOR, 3)
 
 imgplot = plt.imshow(imgcv)
 plt.show()
