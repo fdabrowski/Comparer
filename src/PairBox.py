@@ -1,6 +1,6 @@
 import numpy as np
 
-from src import BoundingBox
+from src.model import BoundingBox
 from src.IoUProvider import IoUProvider
 
 

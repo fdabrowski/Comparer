@@ -1,4 +1,4 @@
-from src.BoundingBox import BoundingBox
+from src.model.BoundingBox import BoundingBox
 
 class IoUProvider():
 

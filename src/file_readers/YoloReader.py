@@ -1,6 +1,6 @@
 import json
-from src.BoundingBox import BoundingBox
-from src.FileReader import FileReader
+from src.model.BoundingBox import BoundingBox
+from src.file_readers.FileReader import FileReader
 
 
 class YoloReader(FileReader):
