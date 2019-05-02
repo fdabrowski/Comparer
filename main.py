@@ -2,13 +2,13 @@ from os import listdir
 from os.path import isfile, join
 
 import cv2
-import matplotlib.pyplot as plt
 import natsort
 
 from src.GroundTruthReader import GroundTruthReader
+from src.PairBox import PairBox
 from src.YoloReader import YoloReader
 from src.boxColors import BoxColors
-from src.boxDrawer import drawPredictedObjects
+from src.boxDrawer import drawPredictedObjects, showConfidence, drawRectangle
 
 GT_FRAMES = '../ground_truth_frames/traffic/frames'
 GT_BOXES = '../ground_truth_frames/traffic/boxes'
@@ -38,8 +38,19 @@ for index in range(0, len(sortedGtFileList)):
     yoloReader = YoloReader('traffic', sortedYoloFileList[index])
     yoloBoundingBoxes = yoloReader.getBoundingBoxes()
     drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.BICYCLE_COLOR, 3)
+    showConfidence(yoloBoundingBoxes, imgcv, BoxColors.BICYCLE_COLOR)
+
+    pairBox = PairBox()
+
+    pairs = pairBox.findPredicted(gtBoundingBoxes, yoloBoundingBoxes)
+
+    drawRectangle(pairs[2][0], imgcv, BoxColors.MOTOR_BIKE_COLOR, 10)
+    drawRectangle(pairs[2][1], imgcv, BoxColors.MOTOR_BIKE_COLOR, 10)
 
     cv2.imwrite(OUT + str(index) + '_out.jpg', imgcv)
 
-
-
+# box1 = BoundingBox(1,1,2,4, 'test')
+# box2 = BoundingBox(1,2,2,4, 'test')
+# iouProvider = IoUProvider()
+# result = iouProvider.bb_intersection_over_union(box1, box2)
+# print(result)

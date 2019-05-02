@@ -14,29 +14,33 @@ BICYCLE_COLOR = (255, 255, 255)
 
 def drawPredictedObjects(result, img, color, width):
     for box in result:
+        drawRectangle(box, img, color, width)
+
+def drawRectangle(box, img, color, width):
+    if(box != None):
         cv2.rectangle(img,
                       (box.topleft_x, box.topleft_y),
-                      (box.downRight_x, box.downRight_y),
+                      (box.downright_x, box.downright_y),
                       color,
                       width)
 
-
-def showConfidence(result, img):
+def showConfidence(result, img, color):
     for box in result:
-        text = box['label'] + ': ' + str('%.1f' % (box['confidence']*100)) + '%'
+        text = box.objectClass
         (text_width, text_height) = cv2.getTextSize(text, font, fontScale=fontScale, thickness=1)[0]
-        text_offset_x = box['topleft']['x']
-        text_offset_y = box['topleft']['y']
+        text_offset_x = box.topleft_x
+        text_offset_y = box.topleft_y
         # make the coords of the box with a small padding of two pixels
         box_coords = ((text_offset_x, text_offset_y), (text_offset_x + text_width - 2, text_offset_y - text_height - 2))
-        cv2.rectangle(img, box_coords[0], box_coords[1], setColorForClass(box['label']), cv2.FILLED)
+        cv2.rectangle(img, box_coords[0], box_coords[1], color, cv2.FILLED)
         cv2.putText(img,
                     text,
-                    (box['topleft']['x'], box['topleft']['y']),
+                    (box.topleft_x, box.topleft_y),
                     font,
                     fontScale,
                     fontColor,
                     lineType)
+
 
 def setColorForClass(label):
     if (label == 'cat'):
@@ -49,6 +53,7 @@ def setColorForClass(label):
         return TRUCK_COLOR
     elif (label == 'bicycle'):
         return BICYCLE_COLOR
+
 
 def drawFirstPrediction(boxes, img):
     h, w, _ = img.shape
