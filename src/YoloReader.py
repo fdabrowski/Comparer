@@ -1,22 +1,25 @@
+import json
 from src.BoundingBox import BoundingBox
 from src.FileReader import FileReader
 
 
-class GroundTruthReader(FileReader):
+class YoloReader(FileReader):
     def __init__(self, projectName, fileName):
-        super(GroundTruthReader, self).__init__(projectName, fileName, 'ground_truth_frames')
+        super(YoloReader, self).__init__(projectName, fileName, 'yolo')
 
     def getBoundingBoxes(self):
         file = self.openBoxFile()
         return self.createBBList(file)
 
     def getBBValues(self, file):
-        result = []
-        for line in file:
-            boxList = line.split()
-            result.append(boxList)
-        result.pop(0)
-        return result
+        with open('data.txt') as json_file:
+            data = json.load(json_file)
+            for p in data['people']:
+                print('Name: ' + p['name'])
+                print('Website: ' + p['website'])
+                print('From: ' + p['from'])
+                print('')
+
 
     def createBBList(self, file):
         result = []

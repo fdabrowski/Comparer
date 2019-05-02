@@ -3,6 +3,8 @@ from os.path import isfile, join
 import cv2
 import natsort
 import matplotlib.pyplot as plt
+
+from src.YoloReader import YoloReader
 from src.boxDrawer import drawPredictedObjects
 from src.GroundTruthReader import GroundTruthReader
 
@@ -19,8 +21,14 @@ allBoundingBox = []
 
 #
 imgcv = cv2.imread(GT_FRAMES +'/frame0.jpg')
-gtAdapter = GroundTruthReader('traffic', 'frame0.txt')
-boundingBoxes = gtAdapter.getBoundingBoxes()
-drawPredictedObjects(boundingBoxes, imgcv)
+
+# gtReader = GroundTruthReader('traffic', 'frame0.txt')
+# gtBoundingBoxes = gtReader.getBoundingBoxes()
+# drawPredictedObjects(gtBoundingBoxes, imgcv)
+
+yoloReader = YoloReader('traffic', 'frame1.json')
+yoloBoundingBoxes = yoloReader.getBoundingBoxes()
+drawPredictedObjects(yoloBoundingBoxes, imgcv)
+
 imgplot = plt.imshow(imgcv)
 plt.show()
