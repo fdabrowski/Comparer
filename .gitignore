@@ -109,3 +109,6 @@ venv.bak/
 *.mp4
 *.jpg
 *.png
+
+# avoid pycharm files
+.idea
