@@ -1,5 +1,7 @@
 from cv2 import cv2
 
+from src.utils.boxColors import BoxColors
+
 font = cv2.QT_FONT_NORMAL
 fontScale = 1
 fontColor = (0, 0, 0)
@@ -40,6 +42,11 @@ def showConfidence(result, img, color):
                     fontScale,
                     fontColor,
                     lineType)
+
+def markPairedBoxes(imgcv, pairs):
+    for pair in pairs:
+        drawRectangle(pair[0], imgcv, BoxColors.GT_PAIR_COLOR, 3)
+        drawRectangle(pair[1], imgcv, BoxColors.PREDICTED_COLOR, 3)
 
 
 def setColorForClass(label):

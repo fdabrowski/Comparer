@@ -4,11 +4,13 @@ from os.path import isfile, join
 import cv2
 import natsort
 
+from src.IoUProvider import IoUProvider
+from src.ResultSaver import ResultSaver
 from src.file_readers.GroundTruthReader import GroundTruthReader
 from src.PairBox import PairBox
 from src.file_readers.YoloReader import YoloReader
 from src.utils.boxColors import BoxColors
-from src.utils.boxDrawer import drawPredictedObjects, showConfidence, drawRectangle
+from src.utils.boxDrawer import drawPredictedObjects, showConfidence, drawRectangle, markPairedBoxes
 
 GT_FRAMES = '../ground_truth_frames/traffic/frames'
 GT_BOXES = '../ground_truth_frames/traffic/boxes'
@@ -30,7 +32,8 @@ allBoundingBox = []
 
 def run() -> None:
     for index in range(0, len(sortedGtFileList)):
-        imgcv = cv2.imread(GT_FRAMES + '/' + sortedGtImages[index])
+        fileName = sortedGtImages[index]
+        imgcv = cv2.imread(GT_FRAMES + '/' + fileName)
 
         gtReader = GroundTruthReader('traffic', sortedGtFileList[index])
         gtBoundingBoxes = gtReader.getBoundingBoxes()
@@ -42,11 +45,16 @@ def run() -> None:
         showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
 
         pairBox = PairBox()
-
         pairs = pairBox.findPredicted(gtBoundingBoxes, yoloBoundingBoxes)
 
-        drawRectangle(pairs[2][0], imgcv, BoxColors.GT_PAIR_COLOR, 3)
-        drawRectangle(pairs[2][1], imgcv, BoxColors.PREDICTED_COLOR, 3)
+        iouProvider = IoUProvider()
+        iouResult = iouProvider.getIouResult(pairs)
+
+        markPairedBoxes(imgcv, pairs)
+
+        resultSaver = ResultSaver(OUT +'/iou')
+
+        resultSaver.saveResult(pairs, iouResult, fileName)
 
         cv2.imwrite(OUT + str(index) + '_out.jpg', imgcv)
 
@@ -55,5 +63,9 @@ def run() -> None:
     # iouProvider = IoUProvider()
     # result = iouProvider.bb_intersection_over_union(box1, box2)
     # print(result)
+
+
+
+
 
 run()

@@ -5,7 +5,7 @@ class IoUProvider():
     def __init__(self) -> None:
         super().__init__()
 
-    def bb_intersection_over_union(self, gtBB: BoundingBox, predictedBB: BoundingBox) -> float:
+    def bbIntersectionOverUnion(self, gtBB: BoundingBox, predictedBB: BoundingBox) -> float:
 
         interArea = self.getInterArea(gtBB, predictedBB)
 
@@ -23,3 +23,9 @@ class IoUProvider():
         yB = min(gtBB.downright_y, predictedBB.downright_y)
 
         return max(0, xB - xA + 1) * max(0, yB - yA + 1)
+
+    def getIouResult(self, pairs):
+        result = []
+        for pair in pairs:
+            result.append(self.bbIntersectionOverUnion(pair[0], pair[1]))
+        return result
