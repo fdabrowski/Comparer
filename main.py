@@ -56,7 +56,7 @@ def run() -> None:
 
         resultSaver.saveResult(pairs, iouResult, fileName)
 
-        cv2.imwrite(OUT + str(index) + '_out.jpg', imgcv)
+        cv2.imwrite(OUT +'/' + str(index) + '_out.jpg', imgcv)
 
     # box1 = BoundingBox(1,1,2,4, 'test')
     # box2 = BoundingBox(1,2,2,4, 'test')

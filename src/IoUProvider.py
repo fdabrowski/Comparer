@@ -1,5 +1,6 @@
 from src.model.BoundingBox import BoundingBox
 
+
 class IoUProvider():
 
     def __init__(self) -> None:
@@ -10,7 +11,8 @@ class IoUProvider():
         interArea = self.getInterArea(gtBB, predictedBB)
 
         boxAArea = (gtBB.downright_x - gtBB.topleft_x + 1) * (gtBB.downright_y - gtBB.topleft_y + 1)
-        boxBArea = (predictedBB.downright_x - predictedBB.topleft_x + 1) * (predictedBB.downright_y - predictedBB.topleft_y + 1)
+        boxBArea = (predictedBB.downright_x - predictedBB.topleft_x + 1) * (
+                    predictedBB.downright_y - predictedBB.topleft_y + 1)
 
         iou = interArea / float(boxAArea + boxBArea - interArea)
 
@@ -27,5 +29,6 @@ class IoUProvider():
     def getIouResult(self, pairs):
         result = []
         for pair in pairs:
-            result.append(self.bbIntersectionOverUnion(pair[0], pair[1]))
+            if (pair[0] != None and pair[1] != None):
+                result.append(self.bbIntersectionOverUnion(pair[0], pair[1]))
         return result
