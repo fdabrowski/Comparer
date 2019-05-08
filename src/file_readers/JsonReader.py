@@ -3,9 +3,9 @@ from src.model.BoundingBox import BoundingBox
 from src.file_readers.FileReader import FileReader
 
 
-class YoloReader(FileReader):
-    def __init__(self, projectName, fileName):
-        super(YoloReader, self).__init__(projectName, fileName, 'yolo')
+class JsonReader(FileReader):
+    def __init__(self, projectName, fileName, folderName):
+        super(JsonReader, self).__init__(projectName, fileName, folderName)
 
     def getBoundingBoxes(self):
         file = self.openBoxFile()

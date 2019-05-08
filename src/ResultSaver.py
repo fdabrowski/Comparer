@@ -1,5 +1,4 @@
 import json
-import itertools
 
 class ResultSaver():
     def __init__(self, dir) -> None:
