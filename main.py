@@ -48,13 +48,13 @@ def run() -> None:
 
         yoloReader = JsonReader('traffic', sortedYoloFileList[index], 'yolo')
         yoloBoundingBoxes = yoloReader.getBoundingBoxes()
-        # drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
-        # showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
+        drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
+        showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
 
         rcnnReader = JsonReader('traffic', sortedMaskRCNNFileList[index], 'mask_RCNN')
         rcnnBoundingBox = rcnnReader.getBoundingBoxes()
-        # drawPredictedObjects(rcnnBoundingBox, imgcv, BoxColors.RCNN_COLOR, 2)
-        # showConfidence(rcnnBoundingBox, imgcv, BoxColors.RCNN_COLOR)
+        drawPredictedObjects(rcnnBoundingBox, imgcv, BoxColors.RCNN_COLOR, 2)
+        showConfidence(rcnnBoundingBox, imgcv, BoxColors.RCNN_COLOR)
 
         yoloPairBox = PairBox()
         yoloPairs = yoloPairBox.findPredicted(gtBoundingBoxes, yoloBoundingBoxes)
