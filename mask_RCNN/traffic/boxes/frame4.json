@@ -1,1 +1,134 @@
-[{"label": "car", "confidence": 1.0, "topleft": {"x": 559, "y": 76}, "bottomright": {"x": 634, "y": 148}}, {"label": "car", "confidence": 0.99, "topleft": {"x": 690, "y": 117}, "bottomright": {"x": 774, "y": 218}}, {"label": "car", "confidence": 0.98, "topleft": {"x": 806, "y": 50}, "bottomright": {"x": 881, "y": 115}}, {"label": "person", "confidence": 0.97, "topleft": {"x": 1241, "y": 28}, "bottomright": {"x": 1270, "y": 82}}, {"label": "car", "confidence": 0.97, "topleft": {"x": 682, "y": 33}, "bottomright": {"x": 728, "y": 71}}, {"label": "car", "confidence": 0.93, "topleft": {"x": 967, "y": 245}, "bottomright": {"x": 1236, "y": 476}}, {"label": "car", "confidence": 0.92, "topleft": {"x": 742, "y": 479}, "bottomright": {"x": 993, "y": 709}}, {"label": "car", "confidence": 0.87, "topleft": {"x": 752, "y": 0}, "bottomright": {"x": 790, "y": 21}}, {"label": "car", "confidence": 0.85, "topleft": {"x": 679, "y": 1}, "bottomright": {"x": 715, "y": 22}}, {"label": "toilet", "confidence": 0.83, "topleft": {"x": 256, "y": 649}, "bottomright": {"x": 455, "y": 716}}, {"label": "car", "confidence": 0.72, "topleft": {"x": 50, "y": 0}, "bottomright": {"x": 131, "y": 23}}]
+[
+  {
+    "label": "car",
+    "confidence": 1.0,
+    "topleft": {
+      "x": 559,
+      "y": 76
+    },
+    "bottomright": {
+      "x": 634,
+      "y": 148
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.99,
+    "topleft": {
+      "x": 690,
+      "y": 117
+    },
+    "bottomright": {
+      "x": 774,
+      "y": 218
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.98,
+    "topleft": {
+      "x": 806,
+      "y": 50
+    },
+    "bottomright": {
+      "x": 881,
+      "y": 115
+    }
+  },
+  {
+    "label": "person",
+    "confidence": 0.97,
+    "topleft": {
+      "x": 1241,
+      "y": 28
+    },
+    "bottomright": {
+      "x": 1270,
+      "y": 82
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.97,
+    "topleft": {
+      "x": 682,
+      "y": 33
+    },
+    "bottomright": {
+      "x": 728,
+      "y": 71
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.93,
+    "topleft": {
+      "x": 967,
+      "y": 245
+    },
+    "bottomright": {
+      "x": 1236,
+      "y": 476
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.92,
+    "topleft": {
+      "x": 742,
+      "y": 479
+    },
+    "bottomright": {
+      "x": 993,
+      "y": 709
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.87,
+    "topleft": {
+      "x": 752,
+      "y": 0
+    },
+    "bottomright": {
+      "x": 790,
+      "y": 21
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.85,
+    "topleft": {
+      "x": 679,
+      "y": 1
+    },
+    "bottomright": {
+      "x": 715,
+      "y": 22
+    }
+  },
+  {
+    "label": "toilet",
+    "confidence": 0.83,
+    "topleft": {
+      "x": 256,
+      "y": 649
+    },
+    "bottomright": {
+      "x": 455,
+      "y": 716
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.72,
+    "topleft": {
+      "x": 50,
+      "y": 0
+    },
+    "bottomright": {
+      "x": 131,
+      "y": 23
+    }
+  }
+]

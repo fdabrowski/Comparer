@@ -1,1 +1,191 @@
-{"frame": [{"groundTruthBox": "{topleft_x:253, topleft_y:651, downright_x:481, downright_y:723, objectClass:car", "predictedBox": "{topleft_x:423, topleft_y:41, downright_x:1117, downright_y:719, objectClass:car", "iou": 0.008401592402038175}, {"groundTruthBox": "{topleft_x:742, topleft_y:487, downright_x:1004, downright_y:718, objectClass:car", "predictedBox": "{topleft_x:986, topleft_y:282, downright_x:1275, downright_y:516, objectClass:car", "iou": 0.004432486235963794}, {"groundTruthBox": "{topleft_x:975, topleft_y:261, downright_x:1190, downright_y:465, objectClass:car", "predictedBox": "{topleft_x:986, topleft_y:282, downright_x:1275, downright_y:516, objectClass:car", "iou": 0.5048855574889572}, {"groundTruthBox": "{topleft_x:686, topleft_y:115, downright_x:776, downright_y:215, objectClass:car", "predictedBox": "{topleft_x:689, topleft_y:112, downright_x:780, downright_y:228, objectClass:car", "iou": 0.8031083401102377}, {"groundTruthBox": "{topleft_x:561, topleft_y:71, downright_x:636, downright_y:147, objectClass:car", "predictedBox": "{topleft_x:562, topleft_y:68, downright_x:634, downright_y:141, objectClass:car", "iou": 0.853730851589524}, {"groundTruthBox": "{topleft_x:679, topleft_y:25, downright_x:730, downright_y:74, objectClass:car", "predictedBox": "{topleft_x:681, topleft_y:28, downright_x:728, downright_y:77, objectClass:car", "iou": 0.8221574344023324}, {"groundTruthBox": "{topleft_x:810, topleft_y:48, downright_x:879, downright_y:116, objectClass:car", "predictedBox": "{topleft_x:818, topleft_y:56, downright_x:889, downright_y:119, objectClass:car", "iou": 0.6686704384724187}, {"groundTruthBox": "{topleft_x:752, topleft_y:5, downright_x:791, downright_y:25, objectClass:car", "predictedBox": "{topleft_x:753, topleft_y:2, downright_x:786, downright_y:20, objectClass:car", "iou": 0.5774946921443737}, {"groundTruthBox": "{topleft_x:679, topleft_y:3, downright_x:714, downright_y:21, objectClass:car", "predictedBox": "{topleft_x:678, topleft_y:5, downright_x:718, downright_y:28, objectClass:car", "iou": 0.5795454545454546}, {"groundTruthBox": "{topleft_x:52, topleft_y:1, downright_x:131, downright_y:24, objectClass:car", "predictedBox": "{topleft_x:47, topleft_y:0, downright_x:130, downright_y:22, objectClass:car", "iou": 0.8221381267738883}]}
+{
+  "frame": [
+    {
+      "groundTruthBox": {
+        "topleft_x": 253,
+        "topleft_y": 651,
+        "downright_x": 481,
+        "downright_y": 723,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 423,
+        "topleft_y": 41,
+        "downright_x": 1117,
+        "downright_y": 719,
+        "objectClass": "car"
+      },
+      "iou": 0.008401592402038175
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 742,
+        "topleft_y": 487,
+        "downright_x": 1004,
+        "downright_y": 718,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 986,
+        "topleft_y": 282,
+        "downright_x": 1275,
+        "downright_y": 516,
+        "objectClass": "car"
+      },
+      "iou": 0.004432486235963794
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 686,
+        "topleft_y": 115,
+        "downright_x": 776,
+        "downright_y": 215,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 689,
+        "topleft_y": 112,
+        "downright_x": 780,
+        "downright_y": 228,
+        "objectClass": "car"
+      },
+      "iou": 0.8031083401102377
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 561,
+        "topleft_y": 71,
+        "downright_x": 636,
+        "downright_y": 147,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 562,
+        "topleft_y": 68,
+        "downright_x": 634,
+        "downright_y": 141,
+        "objectClass": "car"
+      },
+      "iou": 0.853730851589524
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 679,
+        "topleft_y": 25,
+        "downright_x": 730,
+        "downright_y": 74,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 681,
+        "topleft_y": 28,
+        "downright_x": 728,
+        "downright_y": 77,
+        "objectClass": "car"
+      },
+      "iou": 0.8221574344023324
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 810,
+        "topleft_y": 48,
+        "downright_x": 879,
+        "downright_y": 116,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 818,
+        "topleft_y": 56,
+        "downright_x": 889,
+        "downright_y": 119,
+        "objectClass": "car"
+      },
+      "iou": 0.6686704384724187
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 752,
+        "topleft_y": 5,
+        "downright_x": 791,
+        "downright_y": 25,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 753,
+        "topleft_y": 2,
+        "downright_x": 786,
+        "downright_y": 20,
+        "objectClass": "car"
+      },
+      "iou": 0.5774946921443737
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 679,
+        "topleft_y": 3,
+        "downright_x": 714,
+        "downright_y": 21,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 678,
+        "topleft_y": 5,
+        "downright_x": 718,
+        "downright_y": 28,
+        "objectClass": "car"
+      },
+      "iou": 0.5795454545454546
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 52,
+        "topleft_y": 1,
+        "downright_x": 131,
+        "downright_y": 24,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 47,
+        "topleft_y": 0,
+        "downright_x": 130,
+        "downright_y": 22,
+        "objectClass": "car"
+      },
+      "iou": 0.8221381267738883
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 972,
+        "topleft_y": 262,
+        "downright_x": 1229,
+        "downright_y": 469,
+        "objectClass": "car"
+      },
+      "predictedBox": {
+        "topleft_x": 986,
+        "topleft_y": 282,
+        "downright_x": 1275,
+        "downright_y": 516,
+        "objectClass": "car"
+      },
+      "iou": 0.6040399252060783
+    },
+    {
+      "groundTruthBox": {
+        "topleft_x": 1241,
+        "topleft_y": 27,
+        "downright_x": 1264,
+        "downright_y": 84,
+        "objectClass": "person"
+      },
+      "predictedBox": {
+        "topleft_x": 1251,
+        "topleft_y": 26,
+        "downright_x": 1276,
+        "downright_y": 79,
+        "objectClass": "person"
+      },
+      "iou": 0.3612463485881207
+    }
+  ]
+}
