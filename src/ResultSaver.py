@@ -30,10 +30,3 @@ class ResultSaver():
             }
         else:
             return None
-
-    def saveFinalStatistics(self):
-        data = {}
-        data['finalStatistics'] = []
-
-        with open(self.dir + '/finalStatistics.json', 'w+') as outfile:
-            json.dump(data, outfile)

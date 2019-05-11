@@ -5,3 +5,4 @@ class Statistics():
         self.mAP = mAP
         self.recall = recall
         self.precision = precision
+        self.time = 10

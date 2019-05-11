@@ -1,0 +1,11 @@
+{
+  "finalStatistics": [
+    {
+      "alghorithmName": "yolo",
+      "avgIoU": 0.6216900914438991,
+      "mAP": 0.0,
+      "recall": 0.9761081295965015,
+      "precision": 0.7545428561646427
+    }
+  ]
+}
