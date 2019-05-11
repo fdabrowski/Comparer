@@ -29,7 +29,6 @@ class StatisticsProvider():
         return Statistics(
             self.__alghorithmName,
             self.average(self.__iouResult),
-            0,
             self.__getRecall(),
             self.__getPrecision()
         )

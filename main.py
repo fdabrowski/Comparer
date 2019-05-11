@@ -116,7 +116,6 @@ def saveFinalStatistics(statistics: Statistics):
     data['finalStatistics'] = []
     data['finalStatistics'].append({
         'alghorithmName': statistics.alghorithmName,
-        'avgIoU': statistics.avgIoU,
         'mAP': statistics.mAP,
         'recall': statistics.recall,
         'precision': statistics.precision

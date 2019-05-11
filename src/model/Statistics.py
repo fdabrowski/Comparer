@@ -1,7 +1,6 @@
 class Statistics():
-    def __init__(self, alghorithmName, avgIoU, mAP, recall, precision) -> None:
+    def __init__(self, alghorithmName, mAP, recall, precision) -> None:
         self.alghorithmName = alghorithmName
-        self.avgIoU = avgIoU
         self.mAP = mAP
         self.recall = recall
         self.precision = precision
