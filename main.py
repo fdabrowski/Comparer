@@ -1,30 +1,24 @@
-import json
 from os import listdir
 from os.path import isfile, join
 import cv2
 import natsort
-from src.FinalStatistics import avarageStatistics
+from src.utils.FinalStatistics import avarageStatistics, saveFinalStatistics
 from src.IoUProvider import IoUProvider
 from src.PairBox import PairBox
 from src.ResultSaver import ResultSaver
 from src.StatisticsProvider import StatisticsProvider
 from src.file_readers.GroundTruthReader import GroundTruthReader
 from src.file_readers.JsonReader import JsonReader
-from src.model import Statistics
 from src.utils.boxColors import BoxColors
 from src.utils.boxDrawer import drawPredictedObjects, showConfidence
 
 GT_FRAMES = '../ground_truth_frames/traffic/frames'
 GT_BOXES = '../ground_truth_frames/traffic/boxes'
-
 MASK_RCNN_BOXES = '../mask_RCNN/traffic/boxes'
 MASK_RCNN_FRAMES = '../mask_RCNN/traffic/frames'
-
 YOLO_FRAMES = '../yolo/traffic/frames'
 YOLO_BOXES = '../yolo/traffic/boxes'
-
 OUT = '../out/traffic'
-
 FINAL_STATISTICS = OUT + '/statistics'
 
 allGtFiles = [f for f in listdir(GT_BOXES) if isfile(join(GT_BOXES, f))]
@@ -52,17 +46,15 @@ def run() -> None:
         yoloBoundingBoxes = processYolo(index, imgcv)
         rcnnBoundingBoxes = processMaskRcnn(index, imgcv)
 
-        yoloPairBox = PairBox()
-        yoloPairs = yoloPairBox.findPredicted(gtBoundingBoxes, yoloBoundingBoxes)
-
-        maskRCNNPairBox = PairBox()
-        maskRCNNPairs = maskRCNNPairBox.findPredicted(gtBoundingBoxes, rcnnBoundingBoxes)
+        yoloPairs = createPairs(gtBoundingBoxes, yoloBoundingBoxes)
+        maskRCNNPairs = createPairs(gtBoundingBoxes, rcnnBoundingBoxes)
 
         iouProvider = IoUProvider()
         iouYoloResult = iouProvider.getIouResult(yoloPairs)
         iouMaskRCNNResult = iouProvider.getIouResult(maskRCNNPairs)
 
         # markPairedBoxes(imgcv, pairs)
+
         yoloStatisticsProvider = StatisticsProvider('yolo', gtBoundingBoxes, yoloBoundingBoxes, yoloPairs,
                                                     iouYoloResult)
         yoloStatistics = yoloStatisticsProvider.returnStatistics()
@@ -73,20 +65,11 @@ def run() -> None:
         maskRcnnStatistics = maskRcnnStatisticsProvider.returnStatistics()
         maskRcnnAllStatistics.append(maskRcnnStatistics)
 
-        yoloResultSaver = ResultSaver(OUT + '/yolo/iou')
-        yoloResultSaver.saveResult(yoloPairs, iouYoloResult, fileName)
+        saveSingleResult('/yolo/iou', yoloPairs, iouYoloResult, fileName)
+        saveSingleResult('/mask_RCNN/iou', maskRCNNPairs, iouMaskRCNNResult, fileName)
+        saveImage(imgcv, index)
 
-        maskRCNNResultSaver = ResultSaver(OUT + '/mask_RCNN/iou')
-        maskRCNNResultSaver.saveResult(maskRCNNPairs, iouMaskRCNNResult, fileName)
-
-        cv2.imwrite(OUT + '/' + str(index) + '_out.jpg', imgcv)
-
-    yoloFinalStatistics = avarageStatistics(yoloAllStatistics)
-    maskRcnnFinalStatistics = avarageStatistics(maskRcnnAllStatistics)
-
-    saveFinalStatistics(yoloFinalStatistics)
-    saveFinalStatistics(maskRcnnFinalStatistics)
-
+    saveFinalResults(yoloAllStatistics, maskRcnnAllStatistics)
 
 def processYolo(index, imgcv):
     yoloReader = JsonReader('traffic', sortedYoloFileList[index], 'yolo')
@@ -95,13 +78,14 @@ def processYolo(index, imgcv):
     showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
     return yoloBoundingBoxes
 
+def saveImage(imgcv, index):
+    cv2.imwrite(OUT + '/' + str(index) + '_out.jpg', imgcv)
 
 def processGroundTruth(index, imgcv):
     gtReader = GroundTruthReader('traffic', sortedGtFileList[index])
     gtBoundingBoxes = gtReader.getBoundingBoxes()
     drawPredictedObjects(gtBoundingBoxes, imgcv, BoxColors.GT_COLOR, 2)
     return gtBoundingBoxes
-
 
 def processMaskRcnn(index, imgcv):
     rcnnReader = JsonReader('traffic', sortedMaskRCNNFileList[index], 'mask_RCNN')
@@ -110,18 +94,19 @@ def processMaskRcnn(index, imgcv):
     showConfidence(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR)
     return rcnnBoundingBoxes
 
+def saveFinalResults(yoloAllStatistics, maskRcnnAllStatistics):
+    yoloFinalStatistics = avarageStatistics(yoloAllStatistics)
+    maskRcnnFinalStatistics = avarageStatistics(maskRcnnAllStatistics)
+    saveFinalStatistics(FINAL_STATISTICS, yoloFinalStatistics)
+    saveFinalStatistics(FINAL_STATISTICS, maskRcnnFinalStatistics)
 
-def saveFinalStatistics(statistics: Statistics):
-    data = {}
-    data['finalStatistics'] = []
-    data['finalStatistics'].append({
-        'alghorithmName': statistics.alghorithmName,
-        'mAP': statistics.mAP,
-        'recall': statistics.recall,
-        'precision': statistics.precision
-    })
-    with open(FINAL_STATISTICS + '/' + statistics.alghorithmName + '.json', 'w+') as outfile:
-        json.dump(data, outfile)
+def saveSingleResult(dir, pairs, iouResult, fileName):
+    resultSaver = ResultSaver(OUT + dir)
+    resultSaver.saveResult(pairs, iouResult, fileName)
+
+def createPairs(gtBoundingBoxes, predictBoundingBoxes):
+    yoloPairBox = PairBox()
+    return yoloPairBox.findPredicted(gtBoundingBoxes, predictBoundingBoxes)
 
 
 run()
