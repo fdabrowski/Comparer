@@ -1,8 +1,6 @@
 import json
-from typing import List
 
 from src.model import BoundingBox
-
 
 class ResultSaver():
     def __init__(self, dir) -> None:
@@ -21,7 +19,7 @@ class ResultSaver():
         with open(self.dir + '/' + fileName.replace('jpg', 'json'), 'w+') as outfile:
             json.dump(data, outfile)
 
-    def toJSON(pairself, pair: BoundingBox):
+    def toJSON(self, pair: BoundingBox):
         if (pair != None):
             return {
                 'topleft_x': pair.topleft_x,
@@ -32,3 +30,10 @@ class ResultSaver():
             }
         else:
             return None
+
+    def saveFinalStatistics(self):
+        data = {}
+        data['finalStatistics'] = []
+
+        with open(self.dir + '/finalStatistics.json', 'w+') as outfile:
+            json.dump(data, outfile)
