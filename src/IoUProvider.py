@@ -1,6 +1,5 @@
 from src.model.BoundingBox import BoundingBox
 
-
 class IoUProvider():
 
     def __init__(self) -> None:

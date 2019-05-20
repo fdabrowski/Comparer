@@ -1,1 +1,134 @@
-[{"label": "car", "confidence": 0.99, "topleft": {"x": 562, "y": 66}, "bottomright": {"x": 636, "y": 130}}, {"label": "car", "confidence": 0.99, "topleft": {"x": 802, "y": 43}, "bottomright": {"x": 869, "y": 102}}, {"label": "car", "confidence": 0.99, "topleft": {"x": 725, "y": 394}, "bottomright": {"x": 960, "y": 693}}, {"label": "person", "confidence": 0.98, "topleft": {"x": 1239, "y": 27}, "bottomright": {"x": 1270, "y": 82}}, {"label": "car", "confidence": 0.97, "topleft": {"x": 689, "y": 100}, "bottomright": {"x": 766, "y": 196}}, {"label": "car", "confidence": 0.97, "topleft": {"x": 940, "y": 216}, "bottomright": {"x": 1153, "y": 395}}, {"label": "car", "confidence": 0.92, "topleft": {"x": 683, "y": 28}, "bottomright": {"x": 726, "y": 64}}, {"label": "car", "confidence": 0.91, "topleft": {"x": 259, "y": 494}, "bottomright": {"x": 535, "y": 709}}, {"label": "car", "confidence": 0.9, "topleft": {"x": 750, "y": 0}, "bottomright": {"x": 787, "y": 17}}, {"label": "car", "confidence": 0.82, "topleft": {"x": 678, "y": 1}, "bottomright": {"x": 712, "y": 17}}, {"label": "car", "confidence": 0.76, "topleft": {"x": 685, "y": 21}, "bottomright": {"x": 721, "y": 36}}]
+[
+  {
+    "label": "car",
+    "confidence": 0.99,
+    "topleft": {
+      "x": 562,
+      "y": 66
+    },
+    "bottomright": {
+      "x": 636,
+      "y": 130
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.99,
+    "topleft": {
+      "x": 802,
+      "y": 43
+    },
+    "bottomright": {
+      "x": 869,
+      "y": 102
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.99,
+    "topleft": {
+      "x": 725,
+      "y": 394
+    },
+    "bottomright": {
+      "x": 960,
+      "y": 693
+    }
+  },
+  {
+    "label": "person",
+    "confidence": 0.98,
+    "topleft": {
+      "x": 1239,
+      "y": 27
+    },
+    "bottomright": {
+      "x": 1270,
+      "y": 82
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.97,
+    "topleft": {
+      "x": 689,
+      "y": 100
+    },
+    "bottomright": {
+      "x": 766,
+      "y": 196
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.97,
+    "topleft": {
+      "x": 940,
+      "y": 216
+    },
+    "bottomright": {
+      "x": 1153,
+      "y": 395
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.92,
+    "topleft": {
+      "x": 683,
+      "y": 28
+    },
+    "bottomright": {
+      "x": 726,
+      "y": 64
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.91,
+    "topleft": {
+      "x": 259,
+      "y": 494
+    },
+    "bottomright": {
+      "x": 535,
+      "y": 709
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.9,
+    "topleft": {
+      "x": 750,
+      "y": 0
+    },
+    "bottomright": {
+      "x": 787,
+      "y": 17
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.82,
+    "topleft": {
+      "x": 678,
+      "y": 1
+    },
+    "bottomright": {
+      "x": 712,
+      "y": 17
+    }
+  },
+  {
+    "label": "car",
+    "confidence": 0.76,
+    "topleft": {
+      "x": 685,
+      "y": 21
+    },
+    "bottomright": {
+      "x": 721,
+      "y": 36
+    }
+  }
+]

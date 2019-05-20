@@ -1,0 +1,10 @@
+{
+  "finalStatistics": [
+    {
+      "alghorithmName": "ssd",
+      "mAP": 0.7055815767107636,
+      "recall": 0.6118593615686642,
+      "precision": 0.5632788827299771
+    }
+  ]
+}

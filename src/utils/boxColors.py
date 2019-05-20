@@ -4,3 +4,4 @@ class BoxColors:
     GT_PAIR_COLOR = (0, 255, 0)
     PREDICTED_COLOR = (0, 0, 255)
     RCNN_COLOR = (100, 0, 100)
+    SSD_COLOR = (20, 50, 200)
