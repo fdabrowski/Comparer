@@ -11,6 +11,10 @@ class JsonReader(FileReader):
         file = self.openBoxFile()
         return self.createBBList(file)
 
+    def getTime(self):
+        file = self.openTimeFile()
+        return self.__getTimeFromJSON(file)
+
     def createBBList(self, file):
             data = json.load(file)
             result = []
@@ -23,3 +27,7 @@ class JsonReader(FileReader):
                         int(box['bottomright']['y']),
                         box['label']))
             return result
+
+    def __getTimeFromJSON(self, file):
+        data = json.load(file)
+        return data[0]['time']

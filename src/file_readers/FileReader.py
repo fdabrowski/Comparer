@@ -19,3 +19,8 @@ class FileReader():
         filePath = self.__path + '/' + self.__fileName
         if (os.path.isfile(filePath)):
             return open(filePath, 'r+')
+
+    def openTimeFile(self):
+        filePath = '../' +self.__dirName + '/' + self.__projectName +'/time/time.json'
+        if (os.path.isfile(filePath)):
+            return open(filePath, 'r+')

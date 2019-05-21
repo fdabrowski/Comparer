@@ -49,9 +49,9 @@ def run() -> None:
         imgcv = cv2.imread(GT_FRAMES + '/' + fileName)
 
         gtBoundingBoxes = processGroundTruth(index, imgcv)
-        yoloBoundingBoxes = processYolo(index, imgcv)
-        rcnnBoundingBoxes = processMaskRcnn(index, imgcv)
-        ssdBoundingBoxes = processSSD(index, imgcv)
+        yoloBoundingBoxes, yoloTime = processYolo(index, imgcv)
+        rcnnBoundingBoxes, rcnnTime = processMaskRcnn(index, imgcv)
+        ssdBoundingBoxes, ssdTime = processSSD(index, imgcv)
 
         yoloPairs = createPairs(gtBoundingBoxes, yoloBoundingBoxes)
         maskRCNNPairs = createPairs(gtBoundingBoxes, rcnnBoundingBoxes)
@@ -65,15 +65,15 @@ def run() -> None:
         # markPairedBoxes(imgcv, pairs)
 
         yoloStatisticsProvider = StatisticsProvider('yolo', gtBoundingBoxes, yoloBoundingBoxes, yoloPairs,
-                                                    iouYoloResult)
+                                                    iouYoloResult, yoloTime)
         yoloAllStatistics.append(yoloStatisticsProvider.returnStatistics())
 
         maskRcnnStatisticsProvider = StatisticsProvider('maskRCNN', gtBoundingBoxes, rcnnBoundingBoxes, maskRCNNPairs,
-                                                        iouMaskRCNNResult)
+                                                        iouMaskRCNNResult, rcnnTime)
         maskRcnnAllStatistics.append(maskRcnnStatisticsProvider.returnStatistics())
 
         ssdStatisticsProvider = StatisticsProvider('ssd', gtBoundingBoxes, ssdBoundingBoxes, ssdPairs,
-                                                        iouSSDResult)
+                                                        iouSSDResult, ssdTime)
         ssdAllStatistics.append(ssdStatisticsProvider.returnStatistics())
 
         saveSingleResult('/yolo/iou', yoloPairs, iouYoloResult, fileName)
@@ -86,16 +86,18 @@ def run() -> None:
 def processYolo(index, imgcv):
     yoloReader = JsonReader('traffic', sortedYoloFileList[index], 'yolo')
     yoloBoundingBoxes = yoloReader.getBoundingBoxes()
+    time = yoloReader.getTime()
     drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
     showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
-    return yoloBoundingBoxes
+    return yoloBoundingBoxes, time
 
 def processSSD(index, imgcv):
     ssdReader = JsonReader('traffic', sortedSSDFileList[index], 'ssd')
     ssdBoundingBox = ssdReader.getBoundingBoxes()
+    time = ssdReader.getTime()
     drawPredictedObjects(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR, 2)
     showConfidence(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR)
-    return ssdBoundingBox
+    return ssdBoundingBox, time
 
 def saveImage(imgcv, index):
     cv2.imwrite(OUT + '/' + str(index) + '_out.jpg', imgcv)
@@ -109,9 +111,10 @@ def processGroundTruth(index, imgcv):
 def processMaskRcnn(index, imgcv):
     rcnnReader = JsonReader('traffic', sortedMaskRCNNFileList[index], 'mask_RCNN')
     rcnnBoundingBoxes = rcnnReader.getBoundingBoxes()
+    time = rcnnReader.getTime()
     drawPredictedObjects(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR, 2)
     showConfidence(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR)
-    return rcnnBoundingBoxes
+    return rcnnBoundingBoxes, time
 
 def saveFinalResults(yoloAllStatistics, maskRcnnAllStatistics, ssdAllStatistics):
     yoloFinalStatistics = avarageStatistics(yoloAllStatistics)
