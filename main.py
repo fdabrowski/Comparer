@@ -12,15 +12,16 @@ from src.file_readers.JsonReader import JsonReader
 from src.utils.boxColors import BoxColors
 from src.utils.boxDrawer import drawPredictedObjects, showConfidence
 
-GT_FRAMES = '../ground_truth_frames/traffic/frames'
-GT_BOXES = '../ground_truth_frames/traffic/boxes'
-MASK_RCNN_BOXES = '../mask_RCNN/traffic/boxes'
-MASK_RCNN_FRAMES = '../mask_RCNN/traffic/frames'
-SSD_BOXES = '../ssd/traffic/boxes'
-SSD_FRAMES = '../ssd/traffic/frames'
-YOLO_FRAMES = '../yolo/traffic/frames'
-YOLO_BOXES = '../yolo/traffic/boxes'
-OUT = '../out/traffic'
+TRAFFIC = 'traffic'
+NIGHT_STREET = 'night_street'
+PROJECT_NAME = NIGHT_STREET
+
+GT_FRAMES = '../ground_truth_frames/' +PROJECT_NAME +'/frames'
+GT_BOXES = '../ground_truth_frames/' +PROJECT_NAME +'/boxes'
+MASK_RCNN_BOXES = '../mask_RCNN/' +PROJECT_NAME +'/boxes'
+SSD_BOXES = '../ssd/' +PROJECT_NAME +'/boxes'
+YOLO_BOXES = '../yolo/' +PROJECT_NAME +'/boxes'
+OUT = '../out/' +PROJECT_NAME
 FINAL_STATISTICS = OUT + '/statistics'
 
 allGtFiles = [f for f in listdir(GT_BOXES) if isfile(join(GT_BOXES, f))]
@@ -28,7 +29,6 @@ allGtImages = [f for f in listdir(GT_FRAMES) if isfile(join(GT_FRAMES, f))]
 allYoloFIles = [f for f in listdir(YOLO_BOXES) if isfile(join(YOLO_BOXES, f))]
 allMaskRCNNFIles = [f for f in listdir(MASK_RCNN_BOXES) if isfile(join(MASK_RCNN_BOXES, f))]
 allSSDFiles = [f for f in listdir(SSD_BOXES) if isfile(join(SSD_BOXES, f))]
-allSSDImages = [f for f in listdir(SSD_FRAMES) if isfile(join(SSD_FRAMES, f))]
 
 sortedGtFileList = natsort.natsorted(allGtFiles)
 sortedGtImages = natsort.natsorted(allGtImages)
@@ -62,8 +62,6 @@ def run() -> None:
         iouMaskRCNNResult = iouProvider.getIouResult(maskRCNNPairs)
         iouSSDResult = iouProvider.getIouResult(ssdPairs)
 
-        # markPairedBoxes(imgcv, pairs)
-
         yoloStatisticsProvider = StatisticsProvider('yolo', gtBoundingBoxes, yoloBoundingBoxes, yoloPairs,
                                                     iouYoloResult, yoloTime)
         yoloAllStatistics.append(yoloStatisticsProvider.returnStatistics())
@@ -84,17 +82,19 @@ def run() -> None:
     saveFinalResults(yoloAllStatistics, maskRcnnAllStatistics, ssdAllStatistics)
 
 def processYolo(index, imgcv):
-    yoloReader = JsonReader('traffic', sortedYoloFileList[index], 'yolo')
+    yoloReader = JsonReader(PROJECT_NAME, sortedYoloFileList[index], 'yolo')
     yoloBoundingBoxes = yoloReader.getBoundingBoxes()
     time = yoloReader.getTime()
+    yoloBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', yoloBoundingBoxes))
     drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
     showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
     return yoloBoundingBoxes, time
 
 def processSSD(index, imgcv):
-    ssdReader = JsonReader('traffic', sortedSSDFileList[index], 'ssd')
+    ssdReader = JsonReader(PROJECT_NAME, sortedSSDFileList[index], 'ssd')
     ssdBoundingBox = ssdReader.getBoundingBoxes()
     time = ssdReader.getTime()
+    ssdBoundingBox = list(filter(lambda x: x.objectClass == 'person', ssdBoundingBox))
     drawPredictedObjects(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR, 2)
     showConfidence(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR)
     return ssdBoundingBox, time
@@ -103,15 +103,16 @@ def saveImage(imgcv, index):
     cv2.imwrite(OUT + '/' + str(index) + '_out.jpg', imgcv)
 
 def processGroundTruth(index, imgcv):
-    gtReader = GroundTruthReader('traffic', sortedGtFileList[index])
+    gtReader = GroundTruthReader(PROJECT_NAME, sortedGtFileList[index])
     gtBoundingBoxes = gtReader.getBoundingBoxes()
     drawPredictedObjects(gtBoundingBoxes, imgcv, BoxColors.GT_COLOR, 2)
     return gtBoundingBoxes
 
 def processMaskRcnn(index, imgcv):
-    rcnnReader = JsonReader('traffic', sortedMaskRCNNFileList[index], 'mask_RCNN')
+    rcnnReader = JsonReader(PROJECT_NAME, sortedMaskRCNNFileList[index], 'mask_RCNN')
     rcnnBoundingBoxes = rcnnReader.getBoundingBoxes()
     time = rcnnReader.getTime()
+    rcnnBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', rcnnBoundingBoxes))
     drawPredictedObjects(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR, 2)
     showConfidence(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR)
     return rcnnBoundingBoxes, time

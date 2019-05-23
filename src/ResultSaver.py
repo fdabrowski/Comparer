@@ -1,10 +1,10 @@
 import json
-
 from src.model import BoundingBox
+import os
 
 class ResultSaver():
     def __init__(self, dir) -> None:
-        self.dir = dir
+        self.dir = self.__setDir(dir)
 
     def saveResult(self, pairs, iouResults, fileName: str) -> None:
         data = {}
@@ -15,9 +15,13 @@ class ResultSaver():
                 'predictedBox': self.toJSON(pair[1]),
                 'iou': iouResult
             })
-
         with open(self.dir + '/' + fileName.replace('jpg', 'json'), 'w+') as outfile:
             json.dump(data, outfile)
+
+    def __setDir(self, dir):
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+        return dir
 
     def toJSON(self, pair: BoundingBox):
         if (pair != None):
