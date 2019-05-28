@@ -1,3 +1,4 @@
+import sys
 from os import listdir
 from os.path import isfile, join
 import cv2
@@ -14,7 +15,8 @@ from src.utils.boxDrawer import drawPredictedObjects, showConfidence
 
 TRAFFIC = 'traffic'
 NIGHT_STREET = 'night_street'
-PROJECT_NAME = NIGHT_STREET
+DARK_TRAFFIC = 'dark_traffic'
+PROJECT_NAME = DARK_TRAFFIC
 
 GT_FRAMES = '../ground_truth_frames/' +PROJECT_NAME +'/frames'
 GT_BOXES = '../ground_truth_frames/' +PROJECT_NAME +'/boxes'
@@ -85,7 +87,7 @@ def processYolo(index, imgcv):
     yoloReader = JsonReader(PROJECT_NAME, sortedYoloFileList[index], 'yolo')
     yoloBoundingBoxes = yoloReader.getBoundingBoxes()
     time = yoloReader.getTime()
-    yoloBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', yoloBoundingBoxes))
+    # yoloBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', yoloBoundingBoxes))
     drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
     showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
     return yoloBoundingBoxes, time
@@ -94,7 +96,7 @@ def processSSD(index, imgcv):
     ssdReader = JsonReader(PROJECT_NAME, sortedSSDFileList[index], 'ssd')
     ssdBoundingBox = ssdReader.getBoundingBoxes()
     time = ssdReader.getTime()
-    ssdBoundingBox = list(filter(lambda x: x.objectClass == 'person', ssdBoundingBox))
+    # ssdBoundingBox = list(filter(lambda x: x.objectClass == 'person', ssdBoundingBox))
     drawPredictedObjects(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR, 2)
     showConfidence(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR)
     return ssdBoundingBox, time
@@ -112,7 +114,7 @@ def processMaskRcnn(index, imgcv):
     rcnnReader = JsonReader(PROJECT_NAME, sortedMaskRCNNFileList[index], 'mask_RCNN')
     rcnnBoundingBoxes = rcnnReader.getBoundingBoxes()
     time = rcnnReader.getTime()
-    rcnnBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', rcnnBoundingBoxes))
+    # rcnnBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', rcnnBoundingBoxes))
     drawPredictedObjects(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR, 2)
     showConfidence(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR)
     return rcnnBoundingBoxes, time
@@ -135,3 +137,4 @@ def createPairs(gtBoundingBoxes, predictBoundingBoxes):
 
 
 run()
+
