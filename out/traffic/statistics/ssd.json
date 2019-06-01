@@ -1,11 +1,1 @@
-{
-  "finalStatistics": [
-    {
-      "alghorithmName": "ssd",
-      "mAP": 0.6837558156727369,
-      "recall": 0.639020507915857,
-      "precision": 0.5842245486311833,
-      "time": 50.13115620613098
-    }
-  ]
-}
+{"finalStatistics": [{"alghorithmName": "ssd", "mAP": 0.6837558156727369, "recall": 0.639020507915857, "precision": 0.5842245486311833, "time": 50.13115620613098}]}
