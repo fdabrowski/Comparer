@@ -20,7 +20,7 @@ NIGHT_STREET = 'night_street'
 DARK_TRAFFIC = 'dark_traffic'
 LIGHT_TRAFFIC = 'light_traffic'
 BLUR_TRAFFIC = 'blur_traffic'
-PROJECT_NAME = TRAFFIC
+PROJECT_NAME = DARK_TRAFFIC
 
 GT_FRAMES = '../ground_truth_frames/traffic/frames'
 GT_BOXES = '../ground_truth_frames/traffic/boxes'
