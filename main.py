@@ -20,7 +20,10 @@ NIGHT_STREET = 'night_street'
 DARK_TRAFFIC = 'dark_traffic'
 LIGHT_TRAFFIC = 'light_traffic'
 BLUR_TRAFFIC = 'blur_traffic'
-PROJECT_NAME = DARK_TRAFFIC
+DARK = 'dark_'
+LIGHT = 'light_'
+BLUR = 'blur_'
+PROJECT_NAME = LIGHT + NIGHT_STREET
 
 GT_FRAMES = '../ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = '../ground_truth_frames/' + PROJECT_NAME + '/boxes'
@@ -45,6 +48,8 @@ sortedSSDFileList = natsort.natsorted(allSSDFiles)
 
 allBoundingBox = []
 
+if not os.path.exists(OUT):
+    os.makedirs(OUT)
 
 def run() -> None:
     yoloAllStatistics = []
@@ -97,7 +102,7 @@ def processYolo(index, imgcv, imgCopy):
     yoloReader = JsonReader(PROJECT_NAME, sortedYoloFileList[index], 'yolo')
     yoloBoundingBoxes = yoloReader.getBoundingBoxes()
     time = yoloReader.getTime()
-    # yoloBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', yoloBoundingBoxes))
+    yoloBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', yoloBoundingBoxes))
     drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
     drawPredictedObjects(yoloBoundingBoxes, imgCopy, BoxColors.CAR_COLOR, 2)
     showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
@@ -110,7 +115,7 @@ def processSSD(index, imgcv, imgCopy):
     ssdReader = JsonReader(PROJECT_NAME, sortedSSDFileList[index], 'ssd')
     ssdBoundingBox = ssdReader.getBoundingBoxes()
     time = ssdReader.getTime()
-    # ssdBoundingBox = list(filter(lambda x: x.objectClass == 'person', ssdBoundingBox))
+    ssdBoundingBox = list(filter(lambda x: x.objectClass == 'person', ssdBoundingBox))
     drawPredictedObjects(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR, 2)
     drawPredictedObjects(ssdBoundingBox, imgCopy, BoxColors.SSD_COLOR, 2)
     showConfidence(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR)
@@ -141,7 +146,7 @@ def processMaskRcnn(index, imgcv, imgCopy):
     rcnnReader = JsonReader(PROJECT_NAME, sortedMaskRCNNFileList[index], 'mask_RCNN')
     rcnnBoundingBoxes = rcnnReader.getBoundingBoxes()
     time = rcnnReader.getTime()
-    # rcnnBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', rcnnBoundingBoxes))
+    rcnnBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', rcnnBoundingBoxes))
     drawPredictedObjects(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR, 2)
     drawPredictedObjects(rcnnBoundingBoxes, imgCopy, BoxColors.RCNN_COLOR, 2)
     showConfidence(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR)

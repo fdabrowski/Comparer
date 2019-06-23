@@ -3,19 +3,19 @@ import os
 
 
 class GtConverter():
-    def __init__(self, projectName) -> None:
-        self.__projectName = projectName
-        self.__path = self.__createPath()
+    def __init__(self, project_name) -> None:
+        self.__project_name = project_name
+        self.__path = self.__create_path()
 
     def openFileForConvert(self):
         return open(self.__path + '/gt/gt.txt', 'r+')
 
-    def __createPath(self):
-        path = 'ground_truth_frames/' + self.__projectName
+    def __create_path(self):
+        path = 'ground_truth_frames/' + self.__project_name
         if (os.path.isdir(path)):
             return path
 
-    def convertFile(self):
+    def convert_file(self):
         file = self.openFileForConvert()
         table = np.loadtxt(self.__path + '/gt/gt.txt', delimiter=",", dtype=float, usecols=(0, 1, 2, 3, 4, 5, 6, 7, 8))
         # sortedList = sorted(table, key=lambda l: l[0])

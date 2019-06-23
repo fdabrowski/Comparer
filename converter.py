@@ -2,4 +2,4 @@ from GtConverter import GtConverter
 
 converter = GtConverter('night_street')
 
-converter.convertFile()
+converter.convert_file()

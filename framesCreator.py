@@ -7,7 +7,10 @@ NIGHT_STREET = 'night_street'
 DARK_TRAFFIC = 'dark_traffic'
 LIGHT_TRAFFIC = 'light_traffic'
 BLUR_TRAFFIC = 'blur_traffic'
-VIDEO_NAME = BLUR_TRAFFIC
+DARK = 'dark_'
+LIGHT = 'light_'
+BLUR = 'blur_'
+VIDEO_NAME = BLUR + NIGHT_STREET
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/' + VIDEO_NAME
 SAVE_DIR = 'ground_truth_frames/' + VIDEO_NAME + '/frames'
 
