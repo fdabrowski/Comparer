@@ -3,6 +3,7 @@ import os
 import cv2
 
 TRAFFIC = 'traffic'
+ANIMALS = 'animals'
 NIGHT_STREET = 'night_street'
 DARK_TRAFFIC = 'dark_traffic'
 LIGHT_TRAFFIC = 'light_traffic'
@@ -10,12 +11,12 @@ BLUR_TRAFFIC = 'blur_traffic'
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
-VIDEO_NAME = BLUR + NIGHT_STREET
+VIDEO_NAME = ANIMALS
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/' + VIDEO_NAME
 SAVE_DIR = 'ground_truth_frames/' + VIDEO_NAME + '/frames'
 
 
-def saveImage(imgcv, index):
+def save_image(imgcv, index):
     cv2.imwrite(SAVE_DIR + '/frame' + str(index) + '.jpg', imgcv)
 
 if not os.path.exists(SAVE_DIR):
@@ -30,5 +31,5 @@ while True:
     if not ret:
         break
     # Save each frame of the video to a list
-    saveImage(frame, frame_count)
+    save_image(frame, frame_count)
     frame_count += 1

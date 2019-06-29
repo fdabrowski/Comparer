@@ -22,5 +22,5 @@ class GroundTruthReader(FileReader):
         result = []
         bbList = self.getBBValues(file)
         for box in bbList:
-            result.append(BoundingBox(int(box[0]), int(box[1]), int(box[2]), int(box[3]), box[4]))
+            result.append(BoundingBox(int(float(box[0])), int(float(box[1])), int(float(box[2])), int(float(box[3])), box[4]))
         return result

@@ -9,7 +9,7 @@ class FileReader():
         self.__path = self.__createPath()
 
     def __createPath(self):
-        path = '../' + self.__dirName + '/' + self.__projectName + '/boxes'
+        path = './' + self.__dirName + '/' + self.__projectName + '/boxes'
         if (os.path.isdir(path)):
             return path
         else:

@@ -1,29 +1,29 @@
 import copy
-import sys
+import os
 from os import listdir
 from os.path import isfile, join
+
 import cv2
-import os
 import natsort
-from src.utils.FinalStatistics import avarageStatistics, saveFinalStatistics
+
 from src.IoUProvider import IoUProvider
 from src.PairBox import PairBox
 from src.ResultSaver import ResultSaver
 from src.StatisticsProvider import StatisticsProvider
 from src.file_readers.GroundTruthReader import GroundTruthReader
 from src.file_readers.JsonReader import JsonReader
+from src.utils.FinalStatistics import avarageStatistics, saveFinalStatistics
 from src.utils.boxColors import BoxColors
 from src.utils.boxDrawer import drawPredictedObjects, showConfidence
 
 TRAFFIC = 'traffic'
 NIGHT_STREET = 'night_street'
-DARK_TRAFFIC = 'dark_traffic'
-LIGHT_TRAFFIC = 'light_traffic'
-BLUR_TRAFFIC = 'blur_traffic'
+ANIMALS = 'animals'
+
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
-PROJECT_NAME = LIGHT + NIGHT_STREET
+PROJECT_NAME = ANIMALS
 
 GT_FRAMES = '../ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = '../ground_truth_frames/' + PROJECT_NAME + '/boxes'
@@ -60,33 +60,33 @@ def run() -> None:
         fileName = sortedGtImages[index]
         imgcv = cv2.imread(GT_FRAMES + '/' + fileName)
 
-        imgcvYolo = copy.copy(imgcv)
-        imgcvRcnn = copy.copy(imgcv)
-        imgcvSSD = copy.copy(imgcv)
+        imgcv_yolo = copy.copy(imgcv)
+        imgcv_rcnn = copy.copy(imgcv)
+        imgcv_ssd = copy.copy(imgcv)
 
-        gtBoundingBoxes = processGroundTruth(index, imgcv)
-        yoloBoundingBoxes, yoloTime = processYolo(index, imgcv, imgcvYolo)
-        rcnnBoundingBoxes, rcnnTime = processMaskRcnn(index, imgcv, imgcvRcnn)
-        ssdBoundingBoxes, ssdTime = processSSD(index, imgcv, imgcvSSD)
+        gt_bounding_boxes = processGroundTruth(index, imgcv)
+        yolo_bounding_boxes, yoloTime = processYolo(index, imgcv, imgcv_yolo)
+        rcnn_bounding_boxes, rcnnTime = processMaskRcnn(index, imgcv, imgcv_rcnn)
+        ssd_bounding_boxes, ssdTime = processSSD(index, imgcv, imgcv_ssd)
 
-        yoloPairs = createPairs(gtBoundingBoxes, yoloBoundingBoxes)
-        maskRCNNPairs = createPairs(gtBoundingBoxes, rcnnBoundingBoxes)
-        ssdPairs = createPairs(gtBoundingBoxes, ssdBoundingBoxes)
+        yoloPairs = createPairs(gt_bounding_boxes, yolo_bounding_boxes)
+        maskRCNNPairs = createPairs(gt_bounding_boxes, rcnn_bounding_boxes)
+        ssdPairs = createPairs(gt_bounding_boxes, ssd_bounding_boxes)
 
         iouProvider = IoUProvider()
         iouYoloResult = iouProvider.getIouResult(yoloPairs)
         iouMaskRCNNResult = iouProvider.getIouResult(maskRCNNPairs)
         iouSSDResult = iouProvider.getIouResult(ssdPairs)
 
-        yoloStatisticsProvider = StatisticsProvider('yolo', gtBoundingBoxes, yoloBoundingBoxes, yoloPairs,
+        yoloStatisticsProvider = StatisticsProvider('yolo', gt_bounding_boxes, yolo_bounding_boxes, yoloPairs,
                                                     iouYoloResult, yoloTime)
         yoloAllStatistics.append(yoloStatisticsProvider.returnStatistics())
 
-        maskRcnnStatisticsProvider = StatisticsProvider('maskRCNN', gtBoundingBoxes, rcnnBoundingBoxes, maskRCNNPairs,
+        maskRcnnStatisticsProvider = StatisticsProvider('maskRCNN', gt_bounding_boxes, rcnn_bounding_boxes, maskRCNNPairs,
                                                         iouMaskRCNNResult, rcnnTime)
         maskRcnnAllStatistics.append(maskRcnnStatisticsProvider.returnStatistics())
 
-        ssdStatisticsProvider = StatisticsProvider('ssd', gtBoundingBoxes, ssdBoundingBoxes, ssdPairs,
+        ssdStatisticsProvider = StatisticsProvider('ssd', gt_bounding_boxes, ssd_bounding_boxes, ssdPairs,
                                                    iouSSDResult, ssdTime)
         ssdAllStatistics.append(ssdStatisticsProvider.returnStatistics())
 
