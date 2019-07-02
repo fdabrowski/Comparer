@@ -31,12 +31,14 @@ for index in range(0, len(sorted_all_files)):
     new_file = open(CONVERTED_LABELS + '/frame' + str(index) + '.txt', "w+")
     file = open(OUT_LABELS + '/' + sorted_all_files[index], 'r+')
     height_rate, width_rate = get_height_and_width(sorted_all_files[index])
+    new_file.write(str(sum(1 for line in file)) + '\n')
+    file.seek(0)
     for line in file:
         boxList = line.split()
-        new_file.write(str(float(boxList[1])*width_rate) + ' '
-                       + str(float(boxList[2])*height_rate) + ' '
-                       + str(float(boxList[3])*width_rate) + ' '
-                       + str(float(boxList[4])*height_rate) + ' '
+        new_file.write(str(int(float(boxList[1])*width_rate)) + ' '
+                       + str(int(float(boxList[2])*height_rate)) + ' '
+                       + str(int(float(boxList[3])*width_rate)) + ' '
+                       + str(int(float(boxList[4])*height_rate)) + ' '
                        + boxList[0] + '\n')
         # new_file.write(boxList[1]+ ' '
         #                + boxList[2] + ' '
