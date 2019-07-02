@@ -16,7 +16,7 @@ LIGHT = 'light_'
 BLUR = 'blur_'
 ANIMALS = 'animals'
 PROJECT_NAME = ANIMALS
-VIDEO_NAME = LIGHT + ANIMALS
+VIDEO_NAME = ANIMALS
 image_folder = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/out/' + PROJECT_NAME + '/' + VIDEO_NAME + '/'
 
@@ -33,8 +33,8 @@ if not os.path.exists(VIDEO_DIR):
 # alpha = 0.1 # Simple contrast control
 # beta = 20 # Simple brightness control
 
-VIDEO_HEIGHT = 1024
-VIDEO_WIDTH = 800
+VIDEO_HEIGHT = 800
+VIDEO_WIDTH = 1024
 
 images = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
 frame = cv2.imread(os.path.join(image_folder, images[0]))
@@ -46,7 +46,7 @@ video = cv2.VideoWriter(VIDEO_PATH, cv2.VideoWriter_fourcc(*'DIVX'), 1, (height,
 sortedGtImages = natsort.natsorted(images)
 for image in sortedGtImages:
     img = cv2.imread(os.path.join(image_folder, image))
-    img = cv2.resize(img, (VIDEO_HEIGHT, VIDEO_WIDTH))
+    img = cv2.resize(img, (VIDEO_WIDTH, VIDEO_HEIGHT))
 
     # imgModified = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
     # blur = cv2.blur(img, (15, 15))

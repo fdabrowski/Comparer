@@ -12,7 +12,7 @@ DIR = '/Users/filipdabrowski/Documents/git/OIDv4_ToolKit/OID/Dataset/train/' + P
 LABELS = DIR + '/Label'
 OUT = DIR + '/filtered'
 OUT_LABELS = OUT + '/label'
-CONVERTED_LABELS = OUT + '/boxes'
+CONVERTED_LABELS = '/Users/filipdabrowski/Documents/git/Comparer/ground_truth_frames/animals/boxes'
 
 
 def get_height_and_width(file_name: str):
@@ -33,10 +33,10 @@ for index in range(0, len(sorted_all_files)):
     height_rate, width_rate = get_height_and_width(sorted_all_files[index])
     for line in file:
         boxList = line.split()
-        new_file.write(str(float(boxList[1])*height_rate) + ' '
-                       + str(float(boxList[2])*width_rate) + ' '
-                       + str(float(boxList[3])*height_rate) + ' '
-                       + str(float(boxList[4])*width_rate) + ' '
+        new_file.write(str(float(boxList[1])*width_rate) + ' '
+                       + str(float(boxList[2])*height_rate) + ' '
+                       + str(float(boxList[3])*width_rate) + ' '
+                       + str(float(boxList[4])*height_rate) + ' '
                        + boxList[0] + '\n')
         # new_file.write(boxList[1]+ ' '
         #                + boxList[2] + ' '
