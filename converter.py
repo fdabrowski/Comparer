@@ -1,4 +1,4 @@
-from GtConverter import GtConverter
+from gt_converter import GtConverter
 
 converter = GtConverter('night_street')
 
