@@ -18,7 +18,6 @@ class GtConverter():
     def convert_file(self):
         file = self.open_file_for_convert()
         table = np.loadtxt(self.__path + '/gt/gt.txt', delimiter=",", dtype=float, usecols=(0, 1, 2, 3, 4, 5, 6, 7, 8))
-        # sortedList = sorted(table, key=lambda l: l[0])
         length = int(table[len(table) - 1][0])
         for i in range(1, length):
             frame_boxes = list(filter(lambda x: x[0] == i, table))

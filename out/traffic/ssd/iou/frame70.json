@@ -1,1 +1,1 @@
-{"frame": [{"groundTruthBox": {"topleft_x": 710, "topleft_y": 124, "downright_x": 805, "downright_y": 229, "objectClass": "car"}, "predictedBox": null, "iou": 0.9332126192631799}, {"groundTruthBox": {"topleft_x": 596, "topleft_y": 60, "downright_x": 655, "downright_y": 115, "objectClass": "car"}, "predictedBox": null, "iou": 0.6613756613756614}]}
+{"frame": []}

@@ -23,14 +23,15 @@ ANIMALS = 'animals'
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
+AVAILABLE_CLASSES = ['bird', 'dog', 'cat']
 PROJECT_NAME = ANIMALS
 
-GT_FRAMES = '../ground_truth_frames/' + PROJECT_NAME + '/frames'
-GT_BOXES = '../ground_truth_frames/' + PROJECT_NAME + '/boxes'
-MASK_RCNN_BOXES = '../mask_RCNN/' + PROJECT_NAME + '/boxes'
-SSD_BOXES = '../ssd/' + PROJECT_NAME + '/boxes'
-YOLO_BOXES = '../yolo/' + PROJECT_NAME + '/boxes'
-OUT = '../out/' + PROJECT_NAME
+GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
+GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'
+MASK_RCNN_BOXES = 'mask_RCNN/' + PROJECT_NAME + '/boxes'
+SSD_BOXES = 'ssd/' + PROJECT_NAME + '/boxes'
+YOLO_BOXES = 'yolo/' + PROJECT_NAME + '/boxes'
+OUT = 'out/' + PROJECT_NAME
 FINAL_STATISTICS = OUT + '/statistics'
 
 allGtFiles = [f for f in listdir(GT_BOXES) if isfile(join(GT_BOXES, f))]
@@ -102,7 +103,7 @@ def processYolo(index, imgcv, imgCopy):
     yoloReader = JsonReader(PROJECT_NAME, sortedYoloFileList[index], 'yolo')
     yoloBoundingBoxes = yoloReader.getBoundingBoxes()
     time = yoloReader.getTime()
-    yoloBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', yoloBoundingBoxes))
+    yoloBoundingBoxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, yoloBoundingBoxes))
     drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
     drawPredictedObjects(yoloBoundingBoxes, imgCopy, BoxColors.CAR_COLOR, 2)
     showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
@@ -115,7 +116,7 @@ def processSSD(index, imgcv, imgCopy):
     ssdReader = JsonReader(PROJECT_NAME, sortedSSDFileList[index], 'ssd')
     ssdBoundingBox = ssdReader.getBoundingBoxes()
     time = ssdReader.getTime()
-    ssdBoundingBox = list(filter(lambda x: x.objectClass == 'person', ssdBoundingBox))
+    ssdBoundingBox = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, ssdBoundingBox))
     drawPredictedObjects(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR, 2)
     drawPredictedObjects(ssdBoundingBox, imgCopy, BoxColors.SSD_COLOR, 2)
     showConfidence(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR)
@@ -146,7 +147,7 @@ def processMaskRcnn(index, imgcv, imgCopy):
     rcnnReader = JsonReader(PROJECT_NAME, sortedMaskRCNNFileList[index], 'mask_RCNN')
     rcnnBoundingBoxes = rcnnReader.getBoundingBoxes()
     time = rcnnReader.getTime()
-    rcnnBoundingBoxes = list(filter(lambda x: x.objectClass == 'person', rcnnBoundingBoxes))
+    rcnnBoundingBoxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, rcnnBoundingBoxes))
     drawPredictedObjects(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR, 2)
     drawPredictedObjects(rcnnBoundingBoxes, imgCopy, BoxColors.RCNN_COLOR, 2)
     showConfidence(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR)

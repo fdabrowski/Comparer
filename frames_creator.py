@@ -11,7 +11,7 @@ BLUR_TRAFFIC = 'blur_traffic'
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
-VIDEO_NAME = ANIMALS
+VIDEO_NAME = BLUR + ANIMALS
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/' + VIDEO_NAME
 SAVE_DIR = 'ground_truth_frames/' + VIDEO_NAME + '/frames'
 

@@ -5,7 +5,7 @@ from os.path import isfile, join
 
 import natsort
 
-from videoCreator import VIDEO_HEIGHT, VIDEO_WIDTH
+from video_creator import VIDEO_HEIGHT, VIDEO_WIDTH
 
 PROJECT_NAME = 'Bird_Cat_Dog'
 DIR = '/Users/filipdabrowski/Documents/git/OIDv4_ToolKit/OID/Dataset/train/' + PROJECT_NAME
