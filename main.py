@@ -12,19 +12,21 @@ from src.ResultSaver import ResultSaver
 from src.StatisticsProvider import StatisticsProvider
 from src.file_readers.GroundTruthReader import GroundTruthReader
 from src.file_readers.JsonReader import JsonReader
-from src.utils.FinalStatistics import avarageStatistics, saveFinalStatistics
+from src.utils.FinalStatistics import avarage_statistics, save_final_statistics
 from src.utils.boxColors import BoxColors
-from src.utils.boxDrawer import drawPredictedObjects, showConfidence
+from src.utils.boxDrawer import draw_predicted_objects, show_confidence
 
 TRAFFIC = 'traffic'
 NIGHT_STREET = 'night_street'
 ANIMALS = 'animals'
+PERSON = 'person'
 
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
-AVAILABLE_CLASSES = ['bird', 'dog', 'cat']
-PROJECT_NAME = ANIMALS
+# AVAILABLE_CLASSES = ['bird', 'dog', 'cat']
+AVAILABLE_CLASSES = ['cup', 'wine glass, bottle']
+PROJECT_NAME = BLUR + BLUR + PERSON
 
 GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'
@@ -34,145 +36,145 @@ YOLO_BOXES = 'yolo/' + PROJECT_NAME + '/boxes'
 OUT = 'out/' + PROJECT_NAME
 FINAL_STATISTICS = OUT + '/statistics'
 
-allGtFiles = [f for f in listdir(GT_BOXES) if isfile(join(GT_BOXES, f))]
-allGtImages = [f for f in listdir(GT_FRAMES) if isfile(join(GT_FRAMES, f))]
-allYoloFIles = [f for f in listdir(YOLO_BOXES) if isfile(join(YOLO_BOXES, f))]
-allMaskRCNNFIles = [f for f in listdir(MASK_RCNN_BOXES) if isfile(join(MASK_RCNN_BOXES, f))]
-allSSDFiles = [f for f in listdir(SSD_BOXES) if isfile(join(SSD_BOXES, f))]
+all_gt_files = [f for f in listdir(GT_BOXES) if isfile(join(GT_BOXES, f))]
+all_gt_images = [f for f in listdir(GT_FRAMES) if isfile(join(GT_FRAMES, f))]
+all_yolo_files = [f for f in listdir(YOLO_BOXES) if isfile(join(YOLO_BOXES, f))]
+all_mask_rcnn_files = [f for f in listdir(MASK_RCNN_BOXES) if isfile(join(MASK_RCNN_BOXES, f))]
+all_ssd_files = [f for f in listdir(SSD_BOXES) if isfile(join(SSD_BOXES, f))]
 
-sortedGtFileList = natsort.natsorted(allGtFiles)
-sortedGtImages = natsort.natsorted(allGtImages)
+sorted_gt_file_list = natsort.natsorted(all_gt_files)
+sorted_gt_images = natsort.natsorted(all_gt_images)
 
-sortedYoloFileList = natsort.natsorted(allYoloFIles)
-sortedMaskRCNNFileList = natsort.natsorted(allMaskRCNNFIles)
-sortedSSDFileList = natsort.natsorted(allSSDFiles)
+sorted_yolo_file_list = natsort.natsorted(all_yolo_files)
+sorted_mask_rcnn_file_list = natsort.natsorted(all_mask_rcnn_files)
+sorted_ssd_file_list = natsort.natsorted(all_ssd_files)
 
-allBoundingBox = []
+all_bounding_box = []
 
 if not os.path.exists(OUT):
     os.makedirs(OUT)
 
 def run() -> None:
-    yoloAllStatistics = []
-    maskRcnnAllStatistics = []
-    ssdAllStatistics = []
+    yolo_all_statistics = []
+    mask_rcnn_all_statistics = []
+    ssd_all_statistics = []
 
-    for index in range(0, len(sortedGtFileList)):
-        fileName = sortedGtImages[index]
+    for index in range(0, len(sorted_gt_file_list)):
+        fileName = sorted_gt_images[index]
         imgcv = cv2.imread(GT_FRAMES + '/' + fileName)
 
         imgcv_yolo = copy.copy(imgcv)
         imgcv_rcnn = copy.copy(imgcv)
         imgcv_ssd = copy.copy(imgcv)
 
-        gt_bounding_boxes = processGroundTruth(index, imgcv)
-        yolo_bounding_boxes, yoloTime = processYolo(index, imgcv, imgcv_yolo)
-        rcnn_bounding_boxes, rcnnTime = processMaskRcnn(index, imgcv, imgcv_rcnn)
-        ssd_bounding_boxes, ssdTime = processSSD(index, imgcv, imgcv_ssd)
+        gt_bounding_boxes = process_ground_truth(index, imgcv)
+        yolo_bounding_boxes, yoloTime = process_yolo(index, imgcv, imgcv_yolo)
+        rcnn_bounding_boxes, rcnnTime = process_mask_rcnn(index, imgcv, imgcv_rcnn)
+        ssd_bounding_boxes, ssdTime = process_ssd(index, imgcv, imgcv_ssd)
 
-        yoloPairs = createPairs(gt_bounding_boxes, yolo_bounding_boxes)
-        maskRCNNPairs = createPairs(gt_bounding_boxes, rcnn_bounding_boxes)
-        ssdPairs = createPairs(gt_bounding_boxes, ssd_bounding_boxes)
+        yolo_pairs = create_pairs(gt_bounding_boxes, yolo_bounding_boxes)
+        mask_rcnn_pairs = create_pairs(gt_bounding_boxes, rcnn_bounding_boxes)
+        ssd_pairs = create_pairs(gt_bounding_boxes, ssd_bounding_boxes)
 
-        iouProvider = IoUProvider()
-        iouYoloResult = iouProvider.getIouResult(yoloPairs)
-        iouMaskRCNNResult = iouProvider.getIouResult(maskRCNNPairs)
-        iouSSDResult = iouProvider.getIouResult(ssdPairs)
+        iou_provider = IoUProvider()
+        iou_yolo_result = iou_provider.getIouResult(yolo_pairs)
+        iou_mask_rcnn_result = iou_provider.getIouResult(mask_rcnn_pairs)
+        iou_ssd_result = iou_provider.getIouResult(ssd_pairs)
 
-        yoloStatisticsProvider = StatisticsProvider('yolo', gt_bounding_boxes, yolo_bounding_boxes, yoloPairs,
-                                                    iouYoloResult, yoloTime)
-        yoloAllStatistics.append(yoloStatisticsProvider.returnStatistics())
+        yolo_statistics_provider = StatisticsProvider('yolo', gt_bounding_boxes, yolo_bounding_boxes, yolo_pairs,
+                                                    iou_yolo_result, yoloTime)
+        yolo_all_statistics.append(yolo_statistics_provider.returnStatistics())
 
-        maskRcnnStatisticsProvider = StatisticsProvider('maskRCNN', gt_bounding_boxes, rcnn_bounding_boxes, maskRCNNPairs,
-                                                        iouMaskRCNNResult, rcnnTime)
-        maskRcnnAllStatistics.append(maskRcnnStatisticsProvider.returnStatistics())
+        mask_rcnn_statistics_provider = StatisticsProvider('maskRCNN', gt_bounding_boxes, rcnn_bounding_boxes, mask_rcnn_pairs,
+                                                        iou_mask_rcnn_result, rcnnTime)
+        mask_rcnn_all_statistics.append(mask_rcnn_statistics_provider.returnStatistics())
 
-        ssdStatisticsProvider = StatisticsProvider('ssd', gt_bounding_boxes, ssd_bounding_boxes, ssdPairs,
-                                                   iouSSDResult, ssdTime)
-        ssdAllStatistics.append(ssdStatisticsProvider.returnStatistics())
+        ssd_statistics_provider = StatisticsProvider('ssd', gt_bounding_boxes, ssd_bounding_boxes, ssd_pairs,
+                                                   iou_ssd_result, ssdTime)
+        ssd_all_statistics.append(ssd_statistics_provider.returnStatistics())
 
-        saveSingleResult('/yolo/iou', yoloPairs, iouYoloResult, fileName)
-        saveSingleResult('/mask_RCNN/iou', maskRCNNPairs, iouMaskRCNNResult, fileName)
-        saveSingleResult('/ssd/iou', ssdPairs, iouSSDResult, fileName)
-        saveImage(imgcv, index)
+        save_single_result('/yolo/iou', yolo_pairs, iou_yolo_result, fileName)
+        save_single_result('/mask_RCNN/iou', mask_rcnn_pairs, iou_mask_rcnn_result, fileName)
+        save_single_result('/ssd/iou', ssd_pairs, iou_ssd_result, fileName)
+        save_image(imgcv, index)
 
-    saveFinalResults(yoloAllStatistics, maskRcnnAllStatistics, ssdAllStatistics)
-
-
-def processYolo(index, imgcv, imgCopy):
-    yoloReader = JsonReader(PROJECT_NAME, sortedYoloFileList[index], 'yolo')
-    yoloBoundingBoxes = yoloReader.getBoundingBoxes()
-    time = yoloReader.getTime()
-    yoloBoundingBoxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, yoloBoundingBoxes))
-    drawPredictedObjects(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR, 2)
-    drawPredictedObjects(yoloBoundingBoxes, imgCopy, BoxColors.CAR_COLOR, 2)
-    showConfidence(yoloBoundingBoxes, imgcv, BoxColors.CAR_COLOR)
-    showConfidence(yoloBoundingBoxes, imgCopy, BoxColors.CAR_COLOR)
-    saveSingularImage(imgCopy, index, 'yolo')
-    return yoloBoundingBoxes, time
+    save_final_results(yolo_all_statistics, mask_rcnn_all_statistics, ssd_all_statistics)
 
 
-def processSSD(index, imgcv, imgCopy):
-    ssdReader = JsonReader(PROJECT_NAME, sortedSSDFileList[index], 'ssd')
-    ssdBoundingBox = ssdReader.getBoundingBoxes()
-    time = ssdReader.getTime()
-    ssdBoundingBox = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, ssdBoundingBox))
-    drawPredictedObjects(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR, 2)
-    drawPredictedObjects(ssdBoundingBox, imgCopy, BoxColors.SSD_COLOR, 2)
-    showConfidence(ssdBoundingBox, imgcv, BoxColors.SSD_COLOR)
-    showConfidence(ssdBoundingBox, imgCopy, BoxColors.SSD_COLOR)
-    saveSingularImage(imgCopy, index, 'ssd')
-    return ssdBoundingBox, time
+def process_yolo(index, imgcv, imgCopy):
+    yolo_reader = JsonReader(PROJECT_NAME, sorted_yolo_file_list[index], 'yolo')
+    yolo_bounding_boxes = yolo_reader.getBoundingBoxes()
+    time = yolo_reader.getTime()
+    yolo_bounding_boxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, yolo_bounding_boxes))
+    draw_predicted_objects(yolo_bounding_boxes, imgcv, BoxColors.CAR_COLOR, 2)
+    draw_predicted_objects(yolo_bounding_boxes, imgCopy, BoxColors.CAR_COLOR, 2)
+    show_confidence(yolo_bounding_boxes, imgcv, BoxColors.CAR_COLOR)
+    show_confidence(yolo_bounding_boxes, imgCopy, BoxColors.CAR_COLOR)
+    save_singular_image(imgCopy, index, 'yolo')
+    return yolo_bounding_boxes, time
 
 
-def saveImage(imgcv, index):
+def process_ssd(index, imgcv, imgCopy):
+    ssd_reader = JsonReader(PROJECT_NAME, sorted_ssd_file_list[index], 'ssd')
+    ssd_bounding_box = ssd_reader.getBoundingBoxes()
+    time = ssd_reader.getTime()
+    ssd_bounding_box = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, ssd_bounding_box))
+    draw_predicted_objects(ssd_bounding_box, imgcv, BoxColors.SSD_COLOR, 2)
+    draw_predicted_objects(ssd_bounding_box, imgCopy, BoxColors.SSD_COLOR, 2)
+    show_confidence(ssd_bounding_box, imgcv, BoxColors.SSD_COLOR)
+    show_confidence(ssd_bounding_box, imgCopy, BoxColors.SSD_COLOR)
+    save_singular_image(imgCopy, index, 'ssd')
+    return ssd_bounding_box, time
+
+
+def save_image(imgcv, index):
     cv2.imwrite(OUT + '/' + str(index) + '_out.jpg', imgcv)
 
 
-def saveSingularImage(imgcv, index, algName):
+def save_singular_image(imgcv, index, algName):
     path = OUT + '/' + algName + '/frame/'
     if not os.path.exists(path):
         os.makedirs(path)
     cv2.imwrite(path + str(index) + '_out.jpg', imgcv)
 
 
-def processGroundTruth(index, imgcv):
-    gtReader = GroundTruthReader(PROJECT_NAME, sortedGtFileList[index])
-    gtBoundingBoxes = gtReader.getBoundingBoxes()
-    drawPredictedObjects(gtBoundingBoxes, imgcv, BoxColors.GT_COLOR, 2)
-    return gtBoundingBoxes
+def process_ground_truth(index, imgcv):
+    gt_reader = GroundTruthReader(PROJECT_NAME, sorted_gt_file_list[index])
+    gt_bounding_boxes = gt_reader.getBoundingBoxes()
+    draw_predicted_objects(gt_bounding_boxes, imgcv, BoxColors.GT_COLOR, 2)
+    return gt_bounding_boxes
 
 
-def processMaskRcnn(index, imgcv, imgCopy):
-    rcnnReader = JsonReader(PROJECT_NAME, sortedMaskRCNNFileList[index], 'mask_RCNN')
-    rcnnBoundingBoxes = rcnnReader.getBoundingBoxes()
-    time = rcnnReader.getTime()
-    rcnnBoundingBoxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, rcnnBoundingBoxes))
-    drawPredictedObjects(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR, 2)
-    drawPredictedObjects(rcnnBoundingBoxes, imgCopy, BoxColors.RCNN_COLOR, 2)
-    showConfidence(rcnnBoundingBoxes, imgcv, BoxColors.RCNN_COLOR)
-    showConfidence(rcnnBoundingBoxes, imgCopy, BoxColors.RCNN_COLOR)
-    saveSingularImage(imgCopy, index, 'mask_RCNN')
-    return rcnnBoundingBoxes, time
+def process_mask_rcnn(index, imgcv, imgCopy):
+    rcnn_reader = JsonReader(PROJECT_NAME, sorted_mask_rcnn_file_list[index], 'mask_RCNN')
+    rcnn_bounding_boxes = rcnn_reader.getBoundingBoxes()
+    time = rcnn_reader.getTime()
+    rcnn_bounding_boxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, rcnn_bounding_boxes))
+    draw_predicted_objects(rcnn_bounding_boxes, imgcv, BoxColors.RCNN_COLOR, 2)
+    draw_predicted_objects(rcnn_bounding_boxes, imgCopy, BoxColors.RCNN_COLOR, 2)
+    show_confidence(rcnn_bounding_boxes, imgcv, BoxColors.RCNN_COLOR)
+    show_confidence(rcnn_bounding_boxes, imgCopy, BoxColors.RCNN_COLOR)
+    save_singular_image(imgCopy, index, 'mask_RCNN')
+    return rcnn_bounding_boxes, time
 
 
-def saveFinalResults(yoloAllStatistics, maskRcnnAllStatistics, ssdAllStatistics):
-    yoloFinalStatistics = avarageStatistics(yoloAllStatistics)
-    maskRcnnFinalStatistics = avarageStatistics(maskRcnnAllStatistics)
-    ssdFinalStatistics = avarageStatistics(ssdAllStatistics)
-    saveFinalStatistics(FINAL_STATISTICS, yoloFinalStatistics)
-    saveFinalStatistics(FINAL_STATISTICS, maskRcnnFinalStatistics)
-    saveFinalStatistics(FINAL_STATISTICS, ssdFinalStatistics)
+def save_final_results(yoloAllStatistics, maskRcnnAllStatistics, ssdAllStatistics):
+    yolo_final_statistics = avarage_statistics(yoloAllStatistics)
+    mask_rcnn_final_statistics = avarage_statistics(maskRcnnAllStatistics)
+    ssd_final_statistics = avarage_statistics(ssdAllStatistics)
+    save_final_statistics(FINAL_STATISTICS, yolo_final_statistics)
+    save_final_statistics(FINAL_STATISTICS, mask_rcnn_final_statistics)
+    save_final_statistics(FINAL_STATISTICS, ssd_final_statistics)
 
 
-def saveSingleResult(dir, pairs, iouResult, fileName):
+def save_single_result(dir, pairs, iouResult, fileName):
     resultSaver = ResultSaver(OUT + dir)
-    resultSaver.saveResult(pairs, iouResult, fileName)
+    resultSaver.save_result(pairs, iouResult, fileName)
 
 
-def createPairs(gtBoundingBoxes, predictBoundingBoxes):
+def create_pairs(gt_bounding_boxes, predict_bounding_boxes):
     yoloPairBox = PairBox()
-    return yoloPairBox.findPredicted(gtBoundingBoxes, predictBoundingBoxes)
+    return yoloPairBox.find_predicted(gt_bounding_boxes, predict_bounding_boxes)
 
 
 run()

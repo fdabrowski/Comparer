@@ -1,1 +1,1 @@
-{"frame": []}
+{"frame": [{"groundTruthBox": {"topleft_x": 608, "topleft_y": 24, "downright_x": 652, "downright_y": 64, "objectClass": "car"}, "predictedBox": null, "iou": 0.819344262295082}, {"groundTruthBox": {"topleft_x": 646, "topleft_y": 2, "downright_x": 680, "downright_y": 26, "objectClass": "car"}, "predictedBox": null, "iou": 0.7249135752709008}, {"groundTruthBox": {"topleft_x": 692, "topleft_y": 3, "downright_x": 741, "downright_y": 49, "objectClass": "car"}, "predictedBox": null, "iou": 0.5227400336889388}]}

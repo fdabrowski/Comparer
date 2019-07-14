@@ -5,13 +5,12 @@ import cv2
 TRAFFIC = 'traffic'
 ANIMALS = 'animals'
 NIGHT_STREET = 'night_street'
-DARK_TRAFFIC = 'dark_traffic'
-LIGHT_TRAFFIC = 'light_traffic'
-BLUR_TRAFFIC = 'blur_traffic'
+PERSON = 'person'
+GLASS = 'glass'
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
-VIDEO_NAME = BLUR + ANIMALS
+VIDEO_NAME = GLASS
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/' + VIDEO_NAME
 SAVE_DIR = 'ground_truth_frames/' + VIDEO_NAME + '/frames'
 

@@ -1,10 +1,6 @@
-import glob
-
-import numpy as np
-
-import cv2
 import os
 
+import cv2
 import natsort
 
 # image_folder = 'ground_truth_frames/traffic/frames'
@@ -15,8 +11,10 @@ DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
 ANIMALS = 'animals'
-PROJECT_NAME = ANIMALS
-VIDEO_NAME = ANIMALS
+PERSON = 'person'
+GLASS = 'glass'
+PROJECT_NAME = GLASS
+VIDEO_NAME = GLASS
 image_folder = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/out/' + PROJECT_NAME + '/' + VIDEO_NAME + '/'
 
@@ -25,13 +23,13 @@ VIDEO_PATH = VIDEO_DIR + VIDEO_NAME + '.avi'
 if not os.path.exists(VIDEO_DIR):
     os.makedirs(VIDEO_DIR)
 
-# light
-alpha = 1  # Simple contrast control
-beta = 100  # Simple brightness control
-
-# dark
-# alpha = 0.1 # Simple contrast control
-# beta = 20 # Simple brightness control
+# # light
+# alpha = 1  # Simple contrast control
+# beta = 100  # Simple brightness control
+#
+# # dark
+# alpha = 0.1# Simple contrast control
+# beta = 10 # Simple brightness control
 
 VIDEO_HEIGHT = 800
 VIDEO_WIDTH = 1024
@@ -48,9 +46,9 @@ for image in sortedGtImages:
     img = cv2.imread(os.path.join(image_folder, image))
     img = cv2.resize(img, (VIDEO_WIDTH, VIDEO_HEIGHT))
 
-    img_modified = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
+    # img_modified = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
     # blur = cv2.blur(img, (15, 15))
-    video.write(img_modified)
+    video.write(img)
 
 cv2.destroyAllWindows()
 video.release()

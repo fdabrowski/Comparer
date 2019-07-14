@@ -6,7 +6,7 @@ class ResultSaver():
     def __init__(self, dir) -> None:
         self.dir = self.__setDir(dir)
 
-    def saveResult(self, pairs, iouResults, fileName: str) -> None:
+    def save_result(self, pairs, iouResults, fileName: str) -> None:
         data = {}
         data['frame'] = []
         for pair, iouResult in zip(pairs, iouResults):

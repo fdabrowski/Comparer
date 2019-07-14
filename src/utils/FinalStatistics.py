@@ -3,7 +3,7 @@ import os
 
 from src.model.Statistics import Statistics
 
-def avarageStatistics(statisticList):
+def avarage_statistics(statisticList):
     return Statistics(
         statisticList[0].alghorithmName,
         sum(statistics.mAP for statistics in statisticList) / float(len(statisticList)),
@@ -12,7 +12,7 @@ def avarageStatistics(statisticList):
         statisticList[0].time
     )
 
-def saveFinalStatistics(dir: str, statistics: Statistics):
+def save_final_statistics(dir: str, statistics: Statistics):
     data = {}
     data['finalStatistics'] = []
     data['finalStatistics'].append({

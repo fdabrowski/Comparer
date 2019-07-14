@@ -1,3 +1,5 @@
+import copy
+
 import numpy as np
 
 from src.model import BoundingBox
@@ -8,31 +10,36 @@ class PairBox():
     def __init__(self) -> None:
         super().__init__()
 
-    def findPredicted(self, gtBoundingBoxes, predictedBoundingBox):
+    def find_predicted(self, gtBoundingBoxes, predicted_bounding_box):
         result = []
+        predicted_copy = copy.copy(predicted_bounding_box)
         iouProvider = IoUProvider()
         for gtBox in gtBoundingBoxes:
             potencialBoxes = []
-            for predictedBox in predictedBoundingBox:
-                if (self.__ifPotencialPair(iouProvider, gtBox, predictedBox) > 0):
+            for predictedBox in predicted_copy:
+                if (self.__if_potencial_pair(iouProvider, gtBox, predictedBox) > 0):
                     potencialBoxes.append(predictedBox)
             if (len(potencialBoxes) == 1):
                 result.append([gtBox, potencialBoxes[0]])
+                predicted_copy.remove(potencialBoxes[0])
             elif (len(potencialBoxes) == 0):
                 result.append([gtBox, None])
             else:
-                result.append(self.__getClosest(gtBox, potencialBoxes))
+                closest_box = self.__get_closest(gtBox, potencialBoxes)
+                result.append(closest_box)
+                predicted_copy.remove(closest_box[1])
         return result
 
-    def __getClosest(self, gtBox: BoundingBox, potencialBoxes) -> BoundingBox:
+    def __get_closest(self, gtBox: BoundingBox, potencialBoxes) -> BoundingBox:
         result = [gtBox, potencialBoxes[0]]
         for box in potencialBoxes:
-            if (self.__getDistance(gtBox, box) < self.__getDistance(gtBox, potencialBoxes[0])):
+            if (self.__get_distance(gtBox, box) < self.__get_distance(gtBox, potencialBoxes[0])):
                 result[1] = box
         return result
 
-    def __getDistance(self, gtBox, box) -> float:
+    def __get_distance(self, gtBox, box) -> float:
         return np.sqrt(np.square(box.topleft_x - gtBox.topleft_x) + np.square(box.topleft_y - gtBox.topleft_y))
 
-    def __ifPotencialPair(self, iouProvider: IoUProvider, gtBox: BoundingBox, predictedBox: BoundingBox) -> bool:
-        return iouProvider.getInterArea(gtBox, predictedBox) > 0 and gtBox.objectClass == predictedBox.objectClass
+    def __if_potencial_pair(self, iouProvider: IoUProvider, gtBox: BoundingBox, predictedBox: BoundingBox) -> bool:
+        predictedBox.objectClass = predictedBox.objectClass.replace('wine_glass', 'wine glass')
+        return iouProvider.getInterArea(gtBox, predictedBox) > 0 and gtBox.objectClass.lower() == predictedBox.objectClass.lower()

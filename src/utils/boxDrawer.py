@@ -14,7 +14,7 @@ MOTOR_BIKE_COLOR = (255, 0, 0)
 BICYCLE_COLOR = (255, 255, 255)
 
 
-def drawPredictedObjects(result, img, color, width):
+def draw_predicted_objects(result, img, color, width):
     for box in result:
         drawRectangle(box, img, color, width)
 
@@ -26,7 +26,7 @@ def drawRectangle(box, img, color, width):
                       color,
                       width)
 
-def showConfidence(result, img, color):
+def show_confidence(result, img, color):
     for box in result:
         text = box.objectClass
         (text_width, text_height) = cv2.getTextSize(text, font, fontScale=fontScale, thickness=1)[0]
