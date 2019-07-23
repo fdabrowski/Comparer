@@ -1,0 +1,11 @@
+10
+200 59 492 772 Bottle
+0 0 280 799 Bottle
+3 0 229 520 Bottle
+304 0 475 426 Bottle
+353 0 503 503 Bottle
+390 0 505 302 Bottle
+495 32 590 367 Bottle
+504 26 705 587 Bottle
+717 0 942 626 Bottle
+787 0 1023 799 Bottle

@@ -1,0 +1,8 @@
+7
+441 432 478 529 wine_glass
+450 572 500 667 wine_glass
+464 377 490 432 wine_glass
+545 652 597 764 wine_glass
+567 425 600 504 wine_glass
+584 515 632 658 wine_glass
+616 593 666 759 wine_glass

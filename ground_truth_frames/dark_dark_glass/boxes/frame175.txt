@@ -1,0 +1,9 @@
+8
+179 698 280 799 wine_glass
+312 688 439 799 wine_glass
+424 703 480 796 wine_glass
+460 686 592 799 wine_glass
+800 518 860 686 wine_glass
+829 504 883 652 wine_glass
+862 517 935 685 wine_glass
+891 504 943 660 wine_glass

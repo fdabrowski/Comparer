@@ -1,0 +1,13 @@
+12
+324 12 540 755 Bottle
+0 0 132 770 Bottle
+4 22 30 95 Bottle
+86 36 167 234 Bottle
+96 0 334 784 Bottle
+258 26 365 269 Bottle
+472 29 549 274 Bottle
+539 0 753 754 Bottle
+547 32 619 215 Bottle
+717 28 804 249 Bottle
+750 0 947 762 Bottle
+977 139 1023 743 Bottle

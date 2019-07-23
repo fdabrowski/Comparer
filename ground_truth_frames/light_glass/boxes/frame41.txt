@@ -1,0 +1,8 @@
+7
+11 469 108 775 Bottle
+296 560 364 790 Bottle
+135 572 252 714 wine_glass
+280 670 381 799 wine_glass
+494 561 631 799 wine_glass
+576 716 707 795 wine_glass
+650 642 753 799 wine_glass

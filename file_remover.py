@@ -3,7 +3,7 @@ from os import listdir
 from os.path import isfile, join
 from shutil import copyfile
 
-PROJECT_NAME = 'Bottle_Wine glass_Coffee cup'
+PROJECT_NAME = 'Apple_Banana_Orange'
 DIR = '/Users/filipdabrowski/Documents/git/OIDv4_ToolKit/OID/Dataset/train/' + PROJECT_NAME
 LABELS = DIR + '/Label'
 OUT = DIR + '/filtered'

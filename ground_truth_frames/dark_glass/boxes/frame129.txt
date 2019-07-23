@@ -1,0 +1,10 @@
+9
+0 32 34 497 wine_glass
+74 56 257 484 wine_glass
+689 160 760 497 wine_glass
+742 161 848 465 wine_glass
+828 237 917 468 wine_glass
+857 201 929 406 wine_glass
+879 617 1022 745 wine_glass
+901 180 967 478 wine_glass
+983 572 1022 626 wine_glass

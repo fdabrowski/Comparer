@@ -1,0 +1,8 @@
+7
+304 608 341 718 wine_glass
+351 649 397 730 wine_glass
+372 601 409 700 wine_glass
+408 716 460 799 wine_glass
+419 640 460 695 wine_glass
+432 668 483 735 wine_glass
+480 655 528 729 wine_glass

@@ -1,0 +1,7 @@
+6
+517 88 687 419 Bottle
+68 256 244 466 wine_glass
+163 211 315 373 wine_glass
+254 302 465 562 wine_glass
+390 156 498 372 wine_glass
+626 288 913 795 wine_glass

@@ -1,0 +1,8 @@
+7
+68 386 122 510 wine_glass
+115 388 155 504 wine_glass
+218 380 290 581 wine_glass
+465 424 494 484 wine_glass
+533 402 609 584 wine_glass
+784 418 840 590 wine_glass
+838 436 888 556 wine_glass

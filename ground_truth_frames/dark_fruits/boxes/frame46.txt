@@ -1,0 +1,9 @@
+8
+231 262 307 398 Apple
+640 360 757 492 Orange
+562 11 636 94 Orange
+647 0 718 38 Orange
+687 84 775 173 Orange
+757 0 869 58 Orange
+883 0 954 53 Orange
+982 90 1023 168 Orange

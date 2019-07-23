@@ -1,0 +1,8 @@
+7
+12 598 94 685 wine_glass
+166 379 230 508 wine_glass
+175 526 266 650 wine_glass
+344 407 415 549 wine_glass
+366 420 436 552 wine_glass
+437 536 520 733 wine_glass
+526 460 597 619 wine_glass

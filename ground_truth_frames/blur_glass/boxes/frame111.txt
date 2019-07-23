@@ -1,0 +1,10 @@
+9
+324 410 360 552 wine_glass
+375 446 440 631 wine_glass
+450 420 510 598 wine_glass
+460 347 506 417 wine_glass
+504 410 564 583 wine_glass
+548 335 602 403 wine_glass
+559 366 595 518 wine_glass
+584 372 614 517 wine_glass
+590 378 625 495 wine_glass

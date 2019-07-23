@@ -1,0 +1,9 @@
+8
+62 10 974 734 Orange
+0 184 120 624 Orange
+0 0 353 111 Orange
+0 694 526 799 Orange
+456 0 824 65 Orange
+645 714 1023 799 Orange
+721 0 1023 254 Orange
+915 185 1023 669 Orange

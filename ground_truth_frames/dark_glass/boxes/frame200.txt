@@ -1,0 +1,7 @@
+6
+54 653 167 799 wine_glass
+149 676 267 799 wine_glass
+302 734 424 799 wine_glass
+451 636 559 799 wine_glass
+560 681 645 799 wine_glass
+715 730 809 799 wine_glass

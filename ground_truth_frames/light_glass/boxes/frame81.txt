@@ -1,0 +1,9 @@
+8
+248 420 302 572 wine_glass
+312 425 363 568 wine_glass
+332 388 372 501 wine_glass
+377 393 423 500 wine_glass
+434 391 471 492 wine_glass
+465 391 494 487 wine_glass
+558 353 580 405 wine_glass
+579 353 595 406 wine_glass

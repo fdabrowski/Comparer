@@ -1,0 +1,9 @@
+8
+196 673 260 761 wine_glass
+220 684 280 781 wine_glass
+357 689 448 799 wine_glass
+369 661 422 732 wine_glass
+695 674 803 774 wine_glass
+724 684 822 795 wine_glass
+816 689 919 787 wine_glass
+837 664 902 787 wine_glass

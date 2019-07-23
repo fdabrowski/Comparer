@@ -1,0 +1,15 @@
+14
+89 281 151 456 wine_glass
+103 276 153 429 wine_glass
+156 270 224 403 wine_glass
+181 306 254 518 wine_glass
+192 263 234 384 wine_glass
+234 311 311 545 wine_glass
+308 261 348 366 wine_glass
+348 261 387 363 wine_glass
+496 314 567 527 wine_glass
+570 326 647 508 wine_glass
+682 276 719 400 wine_glass
+707 276 750 409 wine_glass
+739 300 789 485 wine_glass
+741 302 782 458 wine_glass

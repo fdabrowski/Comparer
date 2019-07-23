@@ -1,0 +1,8 @@
+7
+339 491 379 618 wine_glass
+340 438 387 553 wine_glass
+373 463 403 542 wine_glass
+378 464 431 623 wine_glass
+679 410 690 450 wine_glass
+694 394 711 452 wine_glass
+796 412 808 448 wine_glass

@@ -1,0 +1,11 @@
+10
+362 87 577 784 Bottle
+1 0 115 526 Bottle
+21 29 264 799 Bottle
+220 18 389 790 Bottle
+286 0 412 721 Bottle
+485 0 586 432 Bottle
+562 0 744 799 Bottle
+685 0 811 698 Bottle
+726 41 945 799 Bottle
+858 0 988 799 Bottle

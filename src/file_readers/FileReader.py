@@ -2,25 +2,25 @@ import os
 
 
 class FileReader():
-    def __init__(self, projectName, fileName, dirName):
-        self.__fileName = fileName
-        self.__projectName = projectName
-        self.__dirName = dirName
-        self.__path = self.__createPath()
+    def __init__(self, project_name, file_name, dir_name):
+        self.__file_name = file_name
+        self.__project_name = project_name
+        self.__dir_name = dir_name
+        self.__path = self.__create_path()
 
-    def __createPath(self):
-        path = './' + self.__dirName + '/' + self.__projectName + '/boxes'
+    def __create_path(self):
+        path = './' + self.__dir_name + '/' + self.__project_name + '/boxes'
         if (os.path.isdir(path)):
             return path
         else:
             return ''
 
-    def openBoxFile(self):
-        filePath = self.__path + '/' + self.__fileName
+    def open_box_file(self):
+        filePath = self.__path + '/' + self.__file_name
         if (os.path.isfile(filePath)):
             return open(filePath, 'r+')
 
-    def openTimeFile(self):
-        filePath = './' +self.__dirName + '/' + self.__projectName +'/time/time.json'
+    def open_time_file(self):
+        filePath = './' + self.__dir_name + '/' + self.__project_name + '/time/time.json'
         if (os.path.isfile(filePath)):
             return open(filePath, 'r+')

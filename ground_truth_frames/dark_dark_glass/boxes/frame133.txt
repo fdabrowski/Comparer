@@ -1,0 +1,7 @@
+6
+352 556 378 638 wine_glass
+558 599 608 740 wine_glass
+564 529 593 601 wine_glass
+573 494 600 553 wine_glass
+579 581 613 680 wine_glass
+583 601 610 686 wine_glass

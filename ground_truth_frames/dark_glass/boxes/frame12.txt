@@ -1,0 +1,9 @@
+8
+206 355 282 591 wine_glass
+294 286 382 594 wine_glass
+300 326 410 638 wine_glass
+344 266 463 625 wine_glass
+474 300 573 581 wine_glass
+533 369 592 572 wine_glass
+549 278 660 609 wine_glass
+672 343 768 599 wine_glass

@@ -1,0 +1,9 @@
+8
+242 142 354 439 wine_glass
+393 120 549 428 wine_glass
+437 157 572 480 wine_glass
+578 133 701 454 wine_glass
+641 178 772 511 wine_glass
+743 150 905 475 wine_glass
+841 188 1000 544 wine_glass
+956 193 1022 508 wine_glass

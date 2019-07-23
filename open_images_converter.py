@@ -7,7 +7,7 @@ import natsort
 
 from video_creator import VIDEO_HEIGHT, VIDEO_WIDTH
 
-PROJECT_NAME = 'glass'
+PROJECT_NAME = 'fruits'
 DIR = '/Users/filipdabrowski/Documents/git/OIDv4_ToolKit/OID/Dataset/train/' + PROJECT_NAME
 LABELS = DIR + '/Label'
 OUT = DIR + '/filtered'

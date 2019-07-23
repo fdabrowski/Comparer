@@ -1,0 +1,7 @@
+6
+10 607 144 799 wine_glass
+479 537 607 630 wine_glass
+605 526 719 693 wine_glass
+739 467 843 667 wine_glass
+807 464 935 620 wine_glass
+927 467 1022 615 wine_glass

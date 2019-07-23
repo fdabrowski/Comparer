@@ -20,13 +20,18 @@ TRAFFIC = 'traffic'
 NIGHT_STREET = 'night_street'
 ANIMALS = 'animals'
 PERSON = 'person'
+GLASS = 'glass'
+FRUITS = 'fruits'
 
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
 # AVAILABLE_CLASSES = ['bird', 'dog', 'cat']
-AVAILABLE_CLASSES = ['cup', 'wine glass, bottle']
-PROJECT_NAME = BLUR + BLUR + PERSON
+# AVAILABLE_CLASSES = ['person', 'car']
+# AVAILABLE_CLASSES = ['cup', 'wine glass', 'bottle']
+# AVAILABLE_CLASSES = ['person']
+AVAILABLE_CLASSES = ['apple', 'banana', 'orange']
+PROJECT_NAME = BLUR + FRUITS
 
 GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'
@@ -108,8 +113,8 @@ def process_yolo(index, imgcv, imgCopy):
     yolo_bounding_boxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, yolo_bounding_boxes))
     draw_predicted_objects(yolo_bounding_boxes, imgcv, BoxColors.CAR_COLOR, 2)
     draw_predicted_objects(yolo_bounding_boxes, imgCopy, BoxColors.CAR_COLOR, 2)
-    show_confidence(yolo_bounding_boxes, imgcv, BoxColors.CAR_COLOR)
-    show_confidence(yolo_bounding_boxes, imgCopy, BoxColors.CAR_COLOR)
+    # show_confidence(yolo_bounding_boxes, imgcv, BoxColors.CAR_COLOR)
+    # show_confidence(yolo_bounding_boxes, imgCopy, BoxColors.CAR_COLOR)
     save_singular_image(imgCopy, index, 'yolo')
     return yolo_bounding_boxes, time
 
@@ -121,8 +126,8 @@ def process_ssd(index, imgcv, imgCopy):
     ssd_bounding_box = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, ssd_bounding_box))
     draw_predicted_objects(ssd_bounding_box, imgcv, BoxColors.SSD_COLOR, 2)
     draw_predicted_objects(ssd_bounding_box, imgCopy, BoxColors.SSD_COLOR, 2)
-    show_confidence(ssd_bounding_box, imgcv, BoxColors.SSD_COLOR)
-    show_confidence(ssd_bounding_box, imgCopy, BoxColors.SSD_COLOR)
+    # show_confidence(ssd_bounding_box, imgcv, BoxColors.SSD_COLOR)
+    # show_confidence(ssd_bounding_box, imgCopy, BoxColors.SSD_COLOR)
     save_singular_image(imgCopy, index, 'ssd')
     return ssd_bounding_box, time
 
@@ -152,8 +157,8 @@ def process_mask_rcnn(index, imgcv, imgCopy):
     rcnn_bounding_boxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, rcnn_bounding_boxes))
     draw_predicted_objects(rcnn_bounding_boxes, imgcv, BoxColors.RCNN_COLOR, 2)
     draw_predicted_objects(rcnn_bounding_boxes, imgCopy, BoxColors.RCNN_COLOR, 2)
-    show_confidence(rcnn_bounding_boxes, imgcv, BoxColors.RCNN_COLOR)
-    show_confidence(rcnn_bounding_boxes, imgCopy, BoxColors.RCNN_COLOR)
+    # show_confidence(rcnn_bounding_boxes, imgcv, BoxColors.RCNN_COLOR)
+    # show_confidence(rcnn_bounding_boxes, imgCopy, BoxColors.RCNN_COLOR)
     save_singular_image(imgCopy, index, 'mask_RCNN')
     return rcnn_bounding_boxes, time
 

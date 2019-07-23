@@ -1,0 +1,13 @@
+12
+220 603 298 719 wine_glass
+243 707 321 798 wine_glass
+250 465 298 568 wine_glass
+282 520 348 671 wine_glass
+346 408 401 533 wine_glass
+362 638 451 798 wine_glass
+499 351 551 464 wine_glass
+524 308 586 416 wine_glass
+666 698 762 798 wine_glass
+684 323 732 457 wine_glass
+842 334 892 423 wine_glass
+867 405 915 435 wine_glass

@@ -1,0 +1,11 @@
+10
+412 364 442 438 wine_glass
+446 482 494 598 wine_glass
+460 397 487 489 wine_glass
+497 466 540 578 wine_glass
+529 444 568 545 wine_glass
+552 441 586 534 wine_glass
+568 583 625 745 wine_glass
+613 547 666 696 wine_glass
+675 705 757 798 wine_glass
+862 721 954 794 wine_glass

@@ -1,1 +1,11 @@
-{"finalStatistics": [{"alghorithmName": "yolo", "mAP": 0.657747306318875, "recall": 0.9828352848701685, "precision": 0.7589897658441105, "time": 48.53563117980957}]}
+{
+  "finalStatistics": [
+    {
+      "alghorithmName": "yolo",
+      "mAP": 0.668021187250024,
+      "recall": 0.9601825500081309,
+      "precision": 0.863827838827838,
+      "time": 48.59734797477722
+    }
+  ]
+}

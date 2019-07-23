@@ -1,0 +1,9 @@
+8
+45 433 143 743 Bottle
+0 600 32 799 Bottle
+0 454 55 592 Bottle
+0 394 74 522 Bottle
+167 393 238 630 Bottle
+202 325 231 428 wine_glass
+240 434 295 602 wine_glass
+821 398 861 525 wine_glass

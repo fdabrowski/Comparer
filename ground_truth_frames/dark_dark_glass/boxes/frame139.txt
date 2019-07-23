@@ -1,0 +1,8 @@
+7
+648 535 730 690 wine_glass
+764 670 874 799 wine_glass
+784 633 867 726 wine_glass
+862 616 988 799 wine_glass
+867 594 984 799 wine_glass
+983 611 1023 799 wine_glass
+992 543 1023 638 wine_glass

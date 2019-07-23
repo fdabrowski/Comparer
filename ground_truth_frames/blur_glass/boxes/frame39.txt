@@ -1,0 +1,13 @@
+12
+199 194 367 664 Bottle
+69 134 219 672 Bottle
+366 27 499 646 Bottle
+503 174 640 650 Bottle
+640 158 799 652 Bottle
+778 93 913 647 Bottle
+71 361 205 713 wine_glass
+229 360 347 710 wine_glass
+396 369 513 716 wine_glass
+544 378 661 716 wine_glass
+689 382 807 721 wine_glass
+833 373 953 715 wine_glass

@@ -1,0 +1,8 @@
+7
+0 545 49 775 wine_glass
+40 544 104 756 wine_glass
+157 570 243 685 wine_glass
+434 683 544 798 wine_glass
+535 715 623 798 wine_glass
+580 762 657 798 wine_glass
+711 768 809 798 wine_glass

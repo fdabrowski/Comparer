@@ -1,0 +1,8 @@
+7
+42 555 145 799 wine_glass
+262 431 307 533 wine_glass
+291 403 327 463 wine_glass
+354 538 456 799 wine_glass
+488 512 567 759 wine_glass
+598 392 631 467 wine_glass
+659 400 701 515 wine_glass

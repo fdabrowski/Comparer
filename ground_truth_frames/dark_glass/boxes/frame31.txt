@@ -1,0 +1,7 @@
+6
+52 619 273 799 wine_glass
+188 388 209 424 wine_glass
+217 388 245 467 wine_glass
+248 416 277 468 wine_glass
+281 392 312 442 wine_glass
+704 694 952 799 wine_glass

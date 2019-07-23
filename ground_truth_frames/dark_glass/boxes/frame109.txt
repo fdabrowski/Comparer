@@ -1,0 +1,9 @@
+8
+142 49 303 604 Bottle
+0 8 56 572 Bottle
+20 100 85 557 Bottle
+431 54 531 533 Bottle
+528 0 675 603 Bottle
+11 251 171 679 wine_glass
+361 262 469 570 wine_glass
+705 257 818 572 wine_glass

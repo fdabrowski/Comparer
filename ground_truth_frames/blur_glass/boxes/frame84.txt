@@ -1,0 +1,14 @@
+13
+0 422 39 511 wine_glass
+0 514 77 692 wine_glass
+17 388 103 476 wine_glass
+19 463 113 608 wine_glass
+73 501 182 668 wine_glass
+76 452 165 520 wine_glass
+83 416 182 532 wine_glass
+146 559 281 732 wine_glass
+177 347 256 461 wine_glass
+304 373 486 682 wine_glass
+318 514 429 753 wine_glass
+709 355 896 652 wine_glass
+881 482 976 647 wine_glass

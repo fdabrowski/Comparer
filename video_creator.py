@@ -13,8 +13,9 @@ BLUR = 'blur_'
 ANIMALS = 'animals'
 PERSON = 'person'
 GLASS = 'glass'
-PROJECT_NAME = GLASS
-VIDEO_NAME = GLASS
+FRUITS = 'fruits'
+PROJECT_NAME = FRUITS
+VIDEO_NAME = BLUR + FRUITS
 image_folder = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/out/' + PROJECT_NAME + '/' + VIDEO_NAME + '/'
 
@@ -23,13 +24,13 @@ VIDEO_PATH = VIDEO_DIR + VIDEO_NAME + '.avi'
 if not os.path.exists(VIDEO_DIR):
     os.makedirs(VIDEO_DIR)
 
-# # light
-# alpha = 1  # Simple contrast control
-# beta = 100  # Simple brightness control
-#
-# # dark
+# light
+# alpha = 1 # Simple contrast control
+# beta = 150 # Simple brightness control
+
+# # # dark
 # alpha = 0.1# Simple contrast control
-# beta = 10 # Simple brightness control
+# beta = 5 # Simple brightness control
 
 VIDEO_HEIGHT = 800
 VIDEO_WIDTH = 1024
@@ -47,8 +48,8 @@ for image in sortedGtImages:
     img = cv2.resize(img, (VIDEO_WIDTH, VIDEO_HEIGHT))
 
     # img_modified = cv2.convertScaleAbs(img, alpha=alpha, beta=beta)
-    # blur = cv2.blur(img, (15, 15))
-    video.write(img)
+    blur = cv2.blur(img, (20, 20))
+    video.write(blur)
 
 cv2.destroyAllWindows()
 video.release()

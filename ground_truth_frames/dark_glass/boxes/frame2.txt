@@ -1,0 +1,16 @@
+15
+47 305 70 326 wine_glass
+94 307 117 330 wine_glass
+117 310 140 329 wine_glass
+192 305 219 337 wine_glass
+222 307 250 337 wine_glass
+250 307 276 336 wine_glass
+276 305 292 340 wine_glass
+336 305 362 341 wine_glass
+362 305 385 344 wine_glass
+413 307 441 342 wine_glass
+441 304 467 341 wine_glass
+535 299 565 341 wine_glass
+556 296 588 336 wine_glass
+878 301 967 484 wine_glass
+904 303 1023 497 wine_glass

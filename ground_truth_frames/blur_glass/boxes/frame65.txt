@@ -1,0 +1,9 @@
+8
+0 430 59 623 wine_glass
+59 591 151 799 wine_glass
+85 425 142 566 wine_glass
+341 441 405 625 wine_glass
+375 596 463 799 wine_glass
+503 580 586 796 wine_glass
+556 447 625 635 wine_glass
+616 548 680 781 wine_glass

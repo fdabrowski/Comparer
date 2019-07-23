@@ -1,0 +1,7 @@
+6
+249 384 309 534 wine_glass
+426 425 462 471 wine_glass
+434 449 478 544 wine_glass
+518 421 552 471 wine_glass
+609 449 651 541 wine_glass
+667 428 705 486 wine_glass

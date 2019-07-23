@@ -3,11 +3,11 @@ from src.file_readers.FileReader import FileReader
 
 
 class GroundTruthReader(FileReader):
-    def __init__(self, projectName, fileName):
-        super(GroundTruthReader, self).__init__(projectName, fileName, 'ground_truth_frames')
+    def __init__(self, project_name, file_name):
+        super(GroundTruthReader, self).__init__(project_name, file_name, 'ground_truth_frames')
 
     def getBoundingBoxes(self):
-        file = self.openBoxFile()
+        file = self.open_box_file()
         return self.createBBList(file)
 
     def getBBValues(self, file):

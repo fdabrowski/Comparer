@@ -11,11 +11,13 @@ TRAFFIC = 'traffic'
 NIGHT_STREET = 'night_street'
 ANIMALS = 'animals'
 PERSON = 'person'
+GLASS = 'glass'
 
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
-PROJECT_NAME = PERSON
+
+PROJECT_NAME = GLASS
 
 GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'

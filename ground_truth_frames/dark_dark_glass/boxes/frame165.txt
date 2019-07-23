@@ -1,0 +1,9 @@
+8
+0 0 127 728 Bottle
+170 36 465 798 Bottle
+563 87 844 798 Bottle
+128 249 182 571 wine_glass
+182 233 239 430 wine_glass
+528 33 945 798 wine_glass
+823 223 1015 694 wine_glass
+918 560 1022 798 wine_glass

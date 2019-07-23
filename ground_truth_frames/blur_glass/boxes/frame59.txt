@@ -1,0 +1,7 @@
+6
+180 658 434 799 wine_glass
+274 471 381 601 wine_glass
+337 416 410 475 wine_glass
+419 438 501 553 wine_glass
+434 406 506 441 wine_glass
+560 543 733 788 wine_glass

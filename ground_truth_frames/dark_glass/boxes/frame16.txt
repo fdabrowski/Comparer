@@ -1,0 +1,25 @@
+24
+0 492 18 557 wine_glass
+30 496 55 557 wine_glass
+55 500 79 518 wine_glass
+96 672 134 773 wine_glass
+120 672 172 790 wine_glass
+164 770 228 799 wine_glass
+169 734 213 780 wine_glass
+289 679 334 799 wine_glass
+325 744 380 799 wine_glass
+378 680 420 799 wine_glass
+407 706 456 799 wine_glass
+455 562 480 637 wine_glass
+456 715 499 796 wine_glass
+469 728 487 763 wine_glass
+480 551 512 631 wine_glass
+523 539 549 613 wine_glass
+536 540 564 609 wine_glass
+682 537 714 593 wine_glass
+712 572 741 656 wine_glass
+730 544 762 593 wine_glass
+757 539 790 587 wine_glass
+769 560 789 640 wine_glass
+791 544 829 621 wine_glass
+810 565 844 652 wine_glass

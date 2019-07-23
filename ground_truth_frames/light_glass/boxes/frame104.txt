@@ -1,0 +1,7 @@
+6
+115 553 180 754 wine_glass
+311 542 387 727 wine_glass
+337 550 393 730 wine_glass
+751 491 803 684 wine_glass
+817 490 883 679 wine_glass
+927 482 1000 666 wine_glass

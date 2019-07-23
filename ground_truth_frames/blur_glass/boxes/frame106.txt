@@ -1,0 +1,9 @@
+8
+333 74 376 128 wine_glass
+347 285 458 378 wine_glass
+364 126 449 197 wine_glass
+439 64 541 143 wine_glass
+449 114 550 188 wine_glass
+463 155 572 256 wine_glass
+577 202 664 303 wine_glass
+816 408 966 560 wine_glass

@@ -1,0 +1,11 @@
+10
+122 146 305 577 wine_glass
+284 146 366 325 wine_glass
+350 45 416 174 wine_glass
+350 246 507 487 wine_glass
+403 8 466 138 wine_glass
+403 130 480 256 wine_glass
+445 55 583 394 wine_glass
+567 136 663 300 wine_glass
+671 124 771 333 wine_glass
+686 174 840 540 wine_glass

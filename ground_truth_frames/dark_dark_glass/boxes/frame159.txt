@@ -1,0 +1,18 @@
+17
+55 312 73 354 wine_glass
+84 318 116 380 wine_glass
+117 347 143 428 wine_glass
+131 341 170 406 wine_glass
+168 342 218 464 wine_glass
+300 367 361 567 wine_glass
+463 312 472 354 wine_glass
+468 315 483 344 wine_glass
+477 308 490 348 wine_glass
+528 313 538 348 wine_glass
+534 313 548 348 wine_glass
+570 370 644 587 wine_glass
+618 384 696 670 wine_glass
+686 391 788 708 wine_glass
+913 316 927 383 wine_glass
+919 315 936 383 wine_glass
+936 315 961 387 wine_glass

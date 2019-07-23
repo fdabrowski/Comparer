@@ -1,0 +1,8 @@
+7
+337 400 360 446 wine_glass
+407 434 435 500 wine_glass
+447 360 480 436 wine_glass
+546 441 576 543 wine_glass
+580 370 603 424 wine_glass
+647 429 679 521 wine_glass
+663 392 681 442 wine_glass

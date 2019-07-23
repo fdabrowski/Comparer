@@ -1,0 +1,10 @@
+9
+392 478 600 799 Bottle
+624 501 818 799 Bottle
+8 546 118 641 wine_glass
+54 582 174 769 wine_glass
+277 555 368 637 wine_glass
+329 627 490 799 wine_glass
+727 637 894 799 wine_glass
+793 575 880 669 wine_glass
+935 618 1022 799 wine_glass

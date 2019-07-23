@@ -1,0 +1,8 @@
+7
+56 240 183 758 Bottle
+226 268 317 727 Bottle
+268 210 409 790 Bottle
+360 302 385 394 Bottle
+449 282 571 705 Bottle
+0 435 44 555 wine_glass
+48 334 220 799 wine_glass

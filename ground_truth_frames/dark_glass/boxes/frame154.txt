@@ -1,0 +1,12 @@
+11
+156 90 183 164 wine_glass
+186 82 221 173 wine_glass
+254 85 288 144 wine_glass
+261 104 288 198 wine_glass
+330 73 361 168 wine_glass
+400 84 432 160 wine_glass
+430 88 461 171 wine_glass
+607 225 673 430 wine_glass
+668 201 739 374 wine_glass
+901 189 978 412 wine_glass
+962 202 1023 410 wine_glass

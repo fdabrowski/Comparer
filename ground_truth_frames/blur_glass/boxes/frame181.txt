@@ -1,0 +1,10 @@
+9
+162 517 224 689 wine_glass
+292 503 352 680 wine_glass
+396 482 460 684 wine_glass
+709 468 761 637 wine_glass
+765 468 817 637 wine_glass
+811 451 867 644 wine_glass
+977 430 1021 538 wine_glass
+28 611 102 672 cup
+513 583 581 637 cup

@@ -1,0 +1,7 @@
+6
+694 324 746 448 wine_glass
+716 222 746 296 wine_glass
+824 220 855 278 wine_glass
+828 296 871 433 wine_glass
+929 415 1001 551 wine_glass
+937 292 983 414 wine_glass

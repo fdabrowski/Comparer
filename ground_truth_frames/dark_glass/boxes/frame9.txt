@@ -1,0 +1,7 @@
+6
+352 54 480 670 Bottle
+596 231 632 466 Bottle
+651 225 702 463 Bottle
+686 237 744 465 Bottle
+59 291 193 687 wine_glass
+214 294 343 687 wine_glass

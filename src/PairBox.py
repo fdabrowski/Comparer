@@ -41,5 +41,5 @@ class PairBox():
         return np.sqrt(np.square(box.topleft_x - gtBox.topleft_x) + np.square(box.topleft_y - gtBox.topleft_y))
 
     def __if_potencial_pair(self, iouProvider: IoUProvider, gtBox: BoundingBox, predictedBox: BoundingBox) -> bool:
-        predictedBox.objectClass = predictedBox.objectClass.replace('wine_glass', 'wine glass')
+        gtBox.objectClass = gtBox.objectClass.replace('wine_glass', 'wine glass')
         return iouProvider.getInterArea(gtBox, predictedBox) > 0 and gtBox.objectClass.lower() == predictedBox.objectClass.lower()

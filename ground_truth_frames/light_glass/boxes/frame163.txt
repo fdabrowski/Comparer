@@ -1,0 +1,11 @@
+10
+0 506 81 799 wine_glass
+32 471 133 734 wine_glass
+44 441 110 654 wine_glass
+92 458 179 758 wine_glass
+464 444 565 688 wine_glass
+563 470 737 799 wine_glass
+681 370 766 512 wine_glass
+870 335 959 485 wine_glass
+870 416 980 532 wine_glass
+963 378 1023 570 wine_glass

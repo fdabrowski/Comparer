@@ -1,0 +1,7 @@
+6
+450 93 645 339 Bottle
+0 25 174 300 wine_glass
+255 100 465 368 wine_glass
+616 2 873 338 wine_glass
+880 13 1023 307 wine_glass
+919 180 1023 387 wine_glass

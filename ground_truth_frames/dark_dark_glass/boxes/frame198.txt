@@ -1,0 +1,15 @@
+14
+501 427 514 487 wine_glass
+543 568 576 667 wine_glass
+552 536 586 648 wine_glass
+564 424 573 465 wine_glass
+585 434 604 458 wine_glass
+599 511 624 608 wine_glass
+609 616 639 719 wine_glass
+616 542 644 618 wine_glass
+632 418 645 460 wine_glass
+644 568 679 700 wine_glass
+822 566 863 713 wine_glass
+855 514 888 631 wine_glass
+883 569 913 640 wine_glass
+905 538 938 634 wine_glass

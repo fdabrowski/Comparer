@@ -1,0 +1,8 @@
+7
+785 519 890 684 Bottle
+652 645 755 792 wine_glass
+666 336 732 462 wine_glass
+782 450 830 522 wine_glass
+793 716 862 799 wine_glass
+818 618 923 756 wine_glass
+872 561 954 678 wine_glass
