@@ -1,0 +1,9 @@
+8
+432 312 273 173 bicycle
+174 440 0 257 bicycle
+460 275 339 94 person
+94 426 0 114 person
+653 347 426 191 bicycle
+672 479 255 265 bicycle
+853 244 789 161 bicycle
+667 468 411 68 person

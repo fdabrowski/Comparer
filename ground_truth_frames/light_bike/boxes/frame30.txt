@@ -1,0 +1,9 @@
+8
+562 395 282 222 bicycle
+372 478 0 290 bicycle
+853 255 753 149 bicycle
+444 320 226 180 bicycle
+854 226 811 78 person
+545 342 395 84 person
+415 298 285 95 person
+277 475 8 71 person

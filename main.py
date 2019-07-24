@@ -22,6 +22,7 @@ ANIMALS = 'animals'
 PERSON = 'person'
 GLASS = 'glass'
 FRUITS = 'fruits'
+BIKE = 'bike'
 
 DARK = 'dark_'
 LIGHT = 'light_'
@@ -30,8 +31,8 @@ BLUR = 'blur_'
 # AVAILABLE_CLASSES = ['person', 'car']
 # AVAILABLE_CLASSES = ['cup', 'wine glass', 'bottle']
 # AVAILABLE_CLASSES = ['person']
-AVAILABLE_CLASSES = ['apple', 'banana', 'orange']
-PROJECT_NAME = BLUR + FRUITS
+AVAILABLE_CLASSES = ['person', 'bicycle']
+PROJECT_NAME = BIKE
 
 GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'
@@ -110,7 +111,7 @@ def process_yolo(index, imgcv, imgCopy):
     yolo_reader = JsonReader(PROJECT_NAME, sorted_yolo_file_list[index], 'yolo')
     yolo_bounding_boxes = yolo_reader.getBoundingBoxes()
     time = yolo_reader.getTime()
-    yolo_bounding_boxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, yolo_bounding_boxes))
+    yolo_bounding_boxes = list(filter(lambda x: x.object_class in AVAILABLE_CLASSES, yolo_bounding_boxes))
     draw_predicted_objects(yolo_bounding_boxes, imgcv, BoxColors.CAR_COLOR, 2)
     draw_predicted_objects(yolo_bounding_boxes, imgCopy, BoxColors.CAR_COLOR, 2)
     # show_confidence(yolo_bounding_boxes, imgcv, BoxColors.CAR_COLOR)
@@ -123,7 +124,7 @@ def process_ssd(index, imgcv, imgCopy):
     ssd_reader = JsonReader(PROJECT_NAME, sorted_ssd_file_list[index], 'ssd')
     ssd_bounding_box = ssd_reader.getBoundingBoxes()
     time = ssd_reader.getTime()
-    ssd_bounding_box = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, ssd_bounding_box))
+    ssd_bounding_box = list(filter(lambda x: x.object_class in AVAILABLE_CLASSES, ssd_bounding_box))
     draw_predicted_objects(ssd_bounding_box, imgcv, BoxColors.SSD_COLOR, 2)
     draw_predicted_objects(ssd_bounding_box, imgCopy, BoxColors.SSD_COLOR, 2)
     # show_confidence(ssd_bounding_box, imgcv, BoxColors.SSD_COLOR)
@@ -154,7 +155,7 @@ def process_mask_rcnn(index, imgcv, imgCopy):
     rcnn_reader = JsonReader(PROJECT_NAME, sorted_mask_rcnn_file_list[index], 'mask_RCNN')
     rcnn_bounding_boxes = rcnn_reader.getBoundingBoxes()
     time = rcnn_reader.getTime()
-    rcnn_bounding_boxes = list(filter(lambda x: x.objectClass in AVAILABLE_CLASSES, rcnn_bounding_boxes))
+    rcnn_bounding_boxes = list(filter(lambda x: x.object_class in AVAILABLE_CLASSES, rcnn_bounding_boxes))
     draw_predicted_objects(rcnn_bounding_boxes, imgcv, BoxColors.RCNN_COLOR, 2)
     draw_predicted_objects(rcnn_bounding_boxes, imgCopy, BoxColors.RCNN_COLOR, 2)
     # show_confidence(rcnn_bounding_boxes, imgcv, BoxColors.RCNN_COLOR)

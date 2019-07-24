@@ -1,0 +1,8 @@
+7
+601 378 329 211 bicycle
+475 478 4 290 bicycle
+854 251 776 154 bicycle
+450 320 226 180 bicycle
+587 312 437 63 person
+422 292 292 95 person
+398 469 121 50 person

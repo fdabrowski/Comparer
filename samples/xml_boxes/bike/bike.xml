@@ -4,19 +4,29 @@
   <meta>
     <task>
       <id>2</id>
-      <name>bike2</name>
+      <name>bicycle2</name>
       <size>176</size>
       <mode>interpolation</mode>
       <overlap>5</overlap>
       <bugtracker></bugtracker>
       <created>2019-07-18 00:55:04.423102+03:00</created>
-      <updated>2019-07-18 02:25:46.315534+03:00</updated>
+      <updated>2019-07-25 00:12:12.740825+03:00</updated>
       <start_frame>0</start_frame>
       <stop_frame>175</stop_frame>
       <frame_filter></frame_filter>
       <labels>
         <label>
-          <name>bike2labels</name>
+          <name>bicycle2labels</name>
+          <attributes>
+          </attributes>
+        </label>
+        <label>
+          <name>bicycle</name>
+          <attributes>
+          </attributes>
+        </label>
+        <label>
+          <name>person</name>
           <attributes>
           </attributes>
         </label>
@@ -38,10 +48,10 @@
         <height>480</height>
       </original_size>
     </task>
-    <dumped>2019-07-18 02:29:41.546809+03:00</dumped>
-    <source>/home/django/data/2/.upload/bike.mp4</source>
+    <dumped>2019-07-25 00:12:16.686301+03:00</dumped>
+    <source>/home/django/data/2/.upload/bicycle.mp4</source>
   </meta>
-  <track id="0" label="bike2labels">
+  <track id="0" label="bicycle">
     <box frame="64" outside="0" occluded="0" keyframe="1" xtl="262.90" ytl="168.16" xbr="361.51" ybr="307.06">
     </box>
     <box frame="65" outside="0" occluded="0" keyframe="0" xtl="264.05" ytl="168.70" xbr="369.40" ybr="307.67">
@@ -267,7 +277,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="0" xtl="382.94" ytl="313.08" xbr="516.70" ybr="401.34">
     </box>
   </track>
-  <track id="1" label="bike2labels">
+  <track id="1" label="bicycle">
     <box frame="66" outside="0" occluded="0" keyframe="1" xtl="0.00" ytl="244.47" xbr="131.71" ybr="426.24">
     </box>
     <box frame="67" outside="0" occluded="0" keyframe="0" xtl="0.00" ytl="246.36" xbr="137.82" ybr="428.32">
@@ -489,7 +499,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="1" xtl="410.60" ytl="391.80" xbr="596.40" ybr="480.00">
     </box>
   </track>
-  <track id="2" label="bike2labels">
+  <track id="2" label="person">
     <box frame="131" outside="0" occluded="0" keyframe="1" xtl="817.66" ytl="149.29" xbr="853.68" ybr="249.61">
     </box>
     <box frame="132" outside="0" occluded="0" keyframe="0" xtl="815.55" ytl="150.30" xbr="853.68" ybr="251.02">
@@ -581,7 +591,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="1" xtl="755.10" ytl="188.69" xbr="811.60" ybr="265.00">
     </box>
   </track>
-  <track id="3" label="bike2labels">
+  <track id="3" label="person">
     <box frame="81" outside="0" occluded="0" keyframe="1" xtl="520.99" ytl="86.70" xbr="643.60" ybr="217.89">
     </box>
     <box frame="82" outside="0" occluded="0" keyframe="0" xtl="523.71" ytl="89.91" xbr="645.46" ybr="226.46">
@@ -773,7 +783,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="1" xtl="562.20" ytl="248.80" xbr="635.90" ybr="377.40">
     </box>
   </track>
-  <track id="4" label="bike2labels">
+  <track id="4" label="person">
     <box frame="59" outside="0" occluded="0" keyframe="1" xtl="336.64" ytl="70.41" xbr="448.97" ybr="169.87">
     </box>
     <box frame="60" outside="0" occluded="0" keyframe="0" xtl="336.86" ytl="72.12" xbr="449.77" ybr="177.43">
@@ -1009,7 +1019,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="1" xtl="422.50" ytl="252.98" xbr="508.10" ybr="378.20">
     </box>
   </track>
-  <track id="5" label="bike2labels">
+  <track id="5" label="person">
     <box frame="71" outside="0" occluded="0" keyframe="1" xtl="0.00" ytl="113.28" xbr="79.41" ybr="425.39">
     </box>
     <box frame="72" outside="0" occluded="0" keyframe="0" xtl="0.29" ytl="114.00" xbr="86.90" ybr="425.79">
@@ -1221,7 +1231,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="0" xtl="450.20" ytl="317.30" xbr="568.30" ybr="479.10">
     </box>
   </track>
-  <track id="6" label="bike2labels">
+  <track id="6" label="person">
     <box frame="147" outside="0" occluded="0" keyframe="1" xtl="58.83" ytl="423.67" xbr="167.73" ybr="477.69">
     </box>
     <box frame="148" outside="0" occluded="0" keyframe="0" xtl="62.98" ytl="422.08" xbr="171.78" ybr="477.73">
@@ -1281,7 +1291,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="1" xtl="183.14" ytl="435.70" xbr="270.60" ybr="478.50">
     </box>
   </track>
-  <track id="7" label="bike2labels">
+  <track id="7" label="bicycle">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="240.61" ytl="199.88" xbr="490.98" ybr="365.37">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="243.08" ytl="200.62" xbr="495.21" ybr="366.37">
@@ -1635,7 +1645,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="1" xtl="522.70" ytl="313.90" xbr="634.90" ybr="401.50">
     </box>
   </track>
-  <track id="8" label="bike2labels">
+  <track id="8" label="bicycle">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="0.53" ytl="290.77" xbr="186.59" ybr="478.55">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="0.53" ytl="290.77" xbr="192.08" ybr="478.55">
@@ -1989,7 +1999,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="1" xtl="676.10" ytl="321.60" xbr="816.00" ybr="434.50">
     </box>
   </track>
-  <track id="9" label="bike2labels">
+  <track id="9" label="bicycle">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="680.47" ytl="145.90" xbr="825.40" ybr="264.19">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="683.52" ytl="146.01" xbr="829.48" ybr="263.80">
@@ -2343,7 +2353,7 @@
     <box frame="175" outside="0" occluded="0" keyframe="0" xtl="729.20" ytl="225.57" xbr="814.54" ybr="296.77">
     </box>
   </track>
-  <track id="10" label="bike2labels">
+  <track id="10" label="bicycle">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="190.02" ytl="185.30" xbr="390.70" ybr="307.92">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="191.01" ytl="185.11" xbr="391.18" ybr="308.06">
@@ -2457,7 +2467,7 @@
     <box frame="60" outside="1" occluded="0" keyframe="1" xtl="226.03" ytl="180.20" xbr="442.96" ybr="320.78">
     </box>
   </track>
-  <track id="11" label="bike2labels">
+  <track id="11" label="person">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="731.06" ytl="71.30" xbr="849.40" ybr="241.90">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="733.95" ytl="71.65" xbr="849.61" ybr="241.66">
@@ -2543,7 +2553,7 @@
     <box frame="90" outside="1" occluded="0" keyframe="1" xtl="843.40" ytl="129.60" xbr="854.00" ybr="223.10">
     </box>
   </track>
-  <track id="12" label="bike2labels">
+  <track id="12" label="person">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="310.06" ytl="107.28" xbr="441.25" ybr="346.50">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="312.51" ytl="105.71" xbr="444.88" ybr="347.06">
@@ -2691,7 +2701,7 @@
     <box frame="72" outside="1" occluded="0" keyframe="1" xtl="478.90" ytl="55.83" xbr="636.70" ybr="304.48">
     </box>
   </track>
-  <track id="13" label="bike2labels">
+  <track id="13" label="person">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="247.47" ytl="106.42" xbr="357.22" ybr="272.76">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="248.92" ytl="105.94" xbr="359.32" ybr="274.03">
@@ -2787,7 +2797,7 @@
     <box frame="46" outside="1" occluded="0" keyframe="1" xtl="301.50" ytl="95.27" xbr="427.50" ybr="292.50">
     </box>
   </track>
-  <track id="14" label="bike2labels">
+  <track id="14" label="person">
     <box frame="0" outside="0" occluded="0" keyframe="1" xtl="0.00" ytl="118.42" xbr="96.56" ybr="474.30">
     </box>
     <box frame="1" outside="0" occluded="0" keyframe="0" xtl="0.11" ytl="117.11" xbr="103.54" ybr="474.47">

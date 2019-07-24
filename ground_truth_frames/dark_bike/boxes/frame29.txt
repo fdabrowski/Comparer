@@ -1,0 +1,9 @@
+8
+560 394 280 221 bicycle
+365 478 0 290 bicycle
+853 255 752 149 bicycle
+443 320 226 180 bicycle
+854 228 809 78 person
+542 343 391 83 person
+414 298 284 95 person
+269 475 0 72 person

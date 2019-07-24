@@ -1,0 +1,9 @@
+8
+548 388 269 216 bicycle
+323 478 0 290 bicycle
+852 256 742 148 bicycle
+433 318 219 180 bicycle
+854 235 796 78 person
+523 353 369 78 person
+411 301 280 95 person
+240 476 1 83 person

@@ -13,7 +13,7 @@ LIGHT = 'light_'
 BLUR = 'blur_'
 FRUITS = 'fruits'
 
-VIDEO_NAME = BIKE
+VIDEO_NAME = BLUR + BIKE
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/' + VIDEO_NAME
 SAVE_DIR = 'ground_truth_frames/' + VIDEO_NAME + '/frames'
 
@@ -24,7 +24,8 @@ def save_image(imgcv, index):
 if not os.path.exists(SAVE_DIR):
     os.makedirs(SAVE_DIR)
 
-capture = cv2.VideoCapture(VIDEO_DIR + '.mp4')
+capture = cv2.VideoCapture(VIDEO_DIR + '.avi')
+
 frame_count = 0
 
 while True:

@@ -1,0 +1,8 @@
+7
+610 375 339 208 bicycle
+491 478 8 290 bicycle
+853 248 782 156 bicycle
+452 320 226 180 bicycle
+854 223 833 78 person
+595 305 446 56 person
+430 471 153 37 person
