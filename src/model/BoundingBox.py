@@ -1,7 +1,7 @@
 class BoundingBox():
 
     def __repr__(self) -> str:
-        return '{topleft_x:' + str(self.topleft_x) + ', topleft_y:' +str(self.topleft_y) + ', downright_x:' +str(self.downright_x)+', downright_y:' +str(self.downright_y) +', objectClass:' +str(self.object_class)
+        return '{topleft_x:' + str(self.topleft_x) + ', topleft_y:' +str(self.topleft_y) + ', downright_x:' +str(self.downright_x)+', downright_y:' +str(self.downright_y) +', object_class:' +str(self.object_class)
 
 
     def __init__(self, topleft_x, topleft_y, downRight_x, downRight_y, object_class):

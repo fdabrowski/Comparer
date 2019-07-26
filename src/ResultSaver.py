@@ -30,7 +30,7 @@ class ResultSaver():
                 'topleft_y': pair.topleft_y,
                 'downright_x': pair.downright_x,
                 'downright_y': pair.downright_y,
-                'objectClass': pair.objectClass
+                'object_class': pair.object_class
             }
         else:
             return None

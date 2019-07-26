@@ -30,10 +30,10 @@ class XmlReader:
 
     def __create_bouding_box_from_tag(self, box, label):
         return BoundingBox(
-            int(float(box.attributes['xtl'].value)),
-            int(float(box.attributes['ytl'].value)),
             int(float(box.attributes['xbr'].value)),
             int(float(box.attributes['ybr'].value)),
+            int(float(box.attributes['xtl'].value)),
+            int(float(box.attributes['ytl'].value)),
             label
         )
 

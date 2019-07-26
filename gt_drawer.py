@@ -5,19 +5,20 @@ import cv2
 import natsort
 from src.file_readers.GroundTruthReader import GroundTruthReader
 from src.utils.boxColors import BoxColors
-from src.utils.boxDrawer import draw_predicted_objects
+from src.utils.boxDrawer import draw_predicted_objects, show_confidence
 
 TRAFFIC = 'traffic'
 NIGHT_STREET = 'night_street'
 ANIMALS = 'animals'
 PERSON = 'person'
 GLASS = 'glass'
+BIKE = 'bike'
 
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
 
-PROJECT_NAME = GLASS
+PROJECT_NAME = BIKE
 
 GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'
@@ -37,4 +38,5 @@ for index in range(0, len(sortedGtFileList)):
     gtReader = GroundTruthReader(PROJECT_NAME, sortedGtFileList[index])
     gtBoundingBoxes = gtReader.getBoundingBoxes()
     draw_predicted_objects(gtBoundingBoxes, imgcv, BoxColors.GT_COLOR, 2)
+    show_confidence(gtBoundingBoxes, imgcv, BoxColors.GT_COLOR)
     cv2.imwrite(OUT +'/' + str(index)  + '_out.jpg', imgcv)

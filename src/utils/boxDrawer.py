@@ -28,7 +28,7 @@ def drawRectangle(box, img, color, width):
 
 def show_confidence(result, img, color):
     for box in result:
-        text = box.objectClass
+        text = box.object_class
         (text_width, text_height) = cv2.getTextSize(text, font, fontScale=fontScale, thickness=1)[0]
         text_offset_x = box.topleft_x
         text_offset_y = box.topleft_y
