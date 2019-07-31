@@ -9,13 +9,14 @@ from src.model.BoundingBox import BoundingBox
 
 class XmlReader:
     path = 'samples/xml_boxes/'
+    gt_path = 'ground_truth_frames/'
     truck_tag = 'track'
     box_tag = 'box'
     label_tag = 'label'
     frame_tag = 'frame'
     def __init__(self, fileName) -> None:
         self.file_name = fileName
-        self.out_path = XmlReader.path + self.file_name + '/boxes'
+        self.out_path = XmlReader.gt_path + self.file_name + '/' + self.file_name + '/boxes'
         self.__create_out_dir()
 
     def __create_out_dir(self):
