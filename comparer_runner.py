@@ -10,10 +10,33 @@ def parseArguments():
     args = parser.parse_args()
     return args
 
-def createModifiedVideos():
-    os.system("python3 video_creator.py " + project_name + " dark")
-    os.system("python3 video_creator.py " + project_name + " light")
-    os.system("python3 video_creator.py " + project_name + " blur")
+def create_modified_videos():
+    dark_script = "python3 video_creator.py " + project_name + " dark"
+    light_script = "python3 video_creator.py " + project_name + " light"
+    blur_script = "python3 video_creator.py " + project_name + " blur"
+    os.system(dark_script)
+    print(dark_script)
+    os.system(light_script)
+    print(light_script)
+    os.system(blur_script)
+    print(blur_script)
+
+def create_main_gt_images():
+    gt_script = "python3 frames_creator.py " + project_name + " " + project_name + " " + format
+    os.system(gt_script)
+    print(gt_script)
+
+def create_modified_gt_images():
+    dark_script = "python3 frames_creator.py " + project_name + " dark_" + project_name + " avi"
+    light_script = "python3 frames_creator.py " + project_name + " light_" + project_name + " avi"
+    blur_script = "python3 frames_creator.py " + project_name + " blur_" + project_name + " avi"
+
+    os.system(dark_script)
+    print(dark_script)
+    os.system(light_script)
+    print(light_script)
+    os.system(blur_script)
+    print(blur_script)
 
 if __name__ == "__main__":
     args = parseArguments()
@@ -21,7 +44,13 @@ if __name__ == "__main__":
     label_source = LabelSource[args.__dict__['label_source']]
     project_name, format = video_name.split('.')
 
-    createModifiedVideos()
+    print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
+    # Create main ground truth images
+    create_main_gt_images()
+    # Create modified videos
+    create_modified_videos()
+    # Create modified ground truth images
+    create_modified_gt_images()
 
 
     print(video_name)
