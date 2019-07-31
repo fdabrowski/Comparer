@@ -84,6 +84,18 @@ def run_yolo(project_name, extension):
     print(yolo_script)
     os.system(yolo_script)
 
+def run_ssd(project_name, extension):
+    ssd_script = 'cd /Users/filipdabrowski/Documents/git/ssd_keras/ && ' \
+                  'python3 sssd_coco.py ' +project_name + ' ' + extension
+    print(ssd_script)
+    os.system(ssd_script)
+
+def run_faster_rcnn(project_name, extension):
+    mask_rcnn_script = 'cd /Users/filipdabrowski/Documents/git/Mask_RCNN/samples/ && ' \
+                  'python3 mask_rcnn.py ' +project_name + ' ' + extension
+    print(mask_rcnn_script)
+    os.system(mask_rcnn_script)
+
 
 if __name__ == "__main__":
     args = parseArguments()
@@ -99,20 +111,39 @@ if __name__ == "__main__":
     print('====== 2. Prepare labels ======')
     create_labels()
     copy_labels_to_modified()
+
     print('====== 3. Run YOLO ======')
     print('=== 3.1 Start yolo for standard video')
     run_yolo(project_name, format)
-    print('=== 3.1 Start yolo for dark video')
+    print('=== 3.2 Start yolo for dark video')
     run_yolo('dark_' + project_name, 'avi')
-    print('=== 3.1 Start yolo for light video')
+    print('=== 3.3 Start yolo for light video')
     run_yolo('light_' + project_name, 'avi')
-    print('=== 3.1 Start yolo for blur video')
+    print('=== 3.4 Start yolo for blur video')
     run_yolo('blur_' + project_name, 'avi')
     print('====== 3. End YOLO ======')
-    print('====== 4. Run SSD ======')
 
+    print('====== 4. Run SSD ======')
+    print('=== 4.1 Start SSD for standard video')
+    run_ssd(project_name, format)
+    print('=== 4.2 Start SSD for dark video')
+    run_ssd('dark_' + project_name, 'avi')
+    print('=== 4.3 Start SSD for light video')
+    run_ssd('light_' + project_name, 'avi')
+    print('=== 4.4 Start SSD for blur video')
+    run_ssd('blur_' + project_name, 'avi')
+    print('====== 4. End SSD ======')
 
     print('====== 5. Run Faster R-CNN ======')
+    print('=== 5.1 Start Faster R-CNN for standard video')
+    run_faster_rcnn(project_name, format)
+    print('=== 5.2 Start Faster R-CNN for dark video')
+    run_faster_rcnn('dark_' + project_name, 'avi')
+    print('=== 5.3 Start Faster R-CNN for light video')
+    run_faster_rcnn('light_' + project_name, 'avi')
+    print('=== 5.4 Start Faster R-CNN for blur video')
+    run_faster_rcnn('blur_' + project_name, 'avi')
+    print('====== 5. END Faster R-CNN ======')
 
     print(video_name)
     print(label_source)
