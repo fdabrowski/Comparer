@@ -12,8 +12,11 @@ DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
 FRUITS = 'fruits'
+HORSE = 'horse'
+HORSE_2 = 'horse2'
+SKI = 'ski'
 
-VIDEO_NAME = BLUR + BIKE
+VIDEO_NAME = BLUR + SKI
 VIDEO_DIR = '/Users/filipdabrowski/Documents/video/' + VIDEO_NAME
 SAVE_DIR = 'ground_truth_frames/' + VIDEO_NAME + '/frames'
 

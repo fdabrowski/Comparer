@@ -23,6 +23,9 @@ PERSON = 'person'
 GLASS = 'glass'
 FRUITS = 'fruits'
 BIKE = 'bike'
+HORSE = 'horse'
+HORSE_2 = 'horse2'
+SKI = 'ski'
 
 DARK = 'dark_'
 LIGHT = 'light_'
@@ -30,9 +33,10 @@ BLUR = 'blur_'
 # AVAILABLE_CLASSES = ['bird', 'dog', 'cat']
 # AVAILABLE_CLASSES = ['person', 'car']
 # AVAILABLE_CLASSES = ['cup', 'wine glass', 'bottle']
-# AVAILABLE_CLASSES = ['person']
-AVAILABLE_CLASSES = ['person', 'bicycle']
-PROJECT_NAME = BLUR + BIKE
+AVAILABLE_CLASSES = ['person']
+# AVAILABLE_CLASSES = ['person', 'bicycle']
+# AVAILABLE_CLASSES = ['skis', 'person']
+PROJECT_NAME = BLUR + SKI
 
 GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
 GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'

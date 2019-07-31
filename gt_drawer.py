@@ -13,16 +13,18 @@ ANIMALS = 'animals'
 PERSON = 'person'
 GLASS = 'glass'
 BIKE = 'bike'
+HORSE_2 = 'horse2'
 
 DARK = 'dark_'
 LIGHT = 'light_'
 BLUR = 'blur_'
 
-PROJECT_NAME = BIKE
+PROJECT_NAME = HORSE_2
 
 GT_FRAMES = 'ground_truth_frames/' + PROJECT_NAME + '/frames'
-GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'
-OUT = 'out/' + 'ground_truth/' + PROJECT_NAME
+# GT_BOXES = 'ground_truth_frames/' + PROJECT_NAME + '/boxes'
+GT_BOXES = 'ssd/' + PROJECT_NAME + '/boxes'
+OUT = 'out/' + 'ground_truth/ssd' + PROJECT_NAME
 allGtFiles = [f for f in listdir(GT_BOXES) if isfile(join(GT_BOXES, f))]
 allGtImages = [f for f in listdir(GT_FRAMES) if isfile(join(GT_FRAMES, f))]
 
