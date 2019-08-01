@@ -1,5 +1,6 @@
 import argparse
 import os
+
 from label_source import LabelSource
 
 
@@ -7,6 +8,7 @@ def parseArguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("video_path", help="Set video path.", type=str)
     parser.add_argument("label_source", help="Set label source.", type=str)
+    parser.add_argument("--available_classes", nargs="*", help="Put classes of objects which are possible to be detected.", type=str)
     args = parser.parse_args()
     return args
 
@@ -126,11 +128,27 @@ def run_ssd_for_all():
     print('=== 4.4 Start SSD for blur video')
     run_ssd('blur_' + project_name, 'avi')
 
+def run_comparer_for_all():
+    print('=== 6.1 Statistics for standard video')
+    run_object_comparer(project_name, project_name)
+    print('=== 6.2 Statistics for dark video')
+    run_object_comparer(project_name, 'dark_' + project_name)
+    print('=== 6.3 Statistics for light video')
+    run_object_comparer(project_name, 'light_' + project_name)
+    print('=== 6.4 Statistics for blur video')
+    run_object_comparer(project_name, 'blur_' + project_name)
+
+def run_object_comparer(project_name, video_name):
+    comparer_script = 'python3 main.py ' + project_name + ' ' + video_name + ' --available_classes ' + ' '.join(available_classes)
+    print(comparer_script)
+    os.system(comparer_script)
 
 if __name__ == "__main__":
     args = parseArguments()
     video_name = args.__dict__['video_path']
     label_source = LabelSource[args.__dict__['label_source']]
+    available_classes = args.__dict__['available_classes']
+
     project_name, format = video_name.split('.')
 
     print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
@@ -156,10 +174,7 @@ if __name__ == "__main__":
     print('====== 5. End Faster R-CNN ======')
 
     print('====== 6. Run Object Detection Comparer ======')
-    # run here all staff from main.py
+    run_comparer_for_all()
     print('====== 6. End Object Detection Comparer ======')
+    print('=========================== WHOOOOOLE PROCESS ENDED ===========================')
 
-
-    print(video_name)
-    print(label_source)
-    print(project_name)

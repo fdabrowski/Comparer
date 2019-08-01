@@ -1,9 +1,0 @@
-8
-285 221 564 394 bicycle
-0 290 379 478 bicycle
-755 150 853 255 bicycle
-226 180 444 320 bicycle
-814 78 854 225 person
-398 85 549 340 person
-285 95 415 297 person
-15 70 285 474 person
