@@ -2,20 +2,6 @@ import argparse
 import os
 import cv2
 
-TRAFFIC = 'traffic'
-ANIMALS = 'animals'
-NIGHT_STREET = 'night_street'
-BIKE = 'bike'
-PERSON = 'person'
-GLASS = 'glass'
-DARK = 'dark_'
-LIGHT = 'light_'
-BLUR = 'blur_'
-FRUITS = 'fruits'
-HORSE = 'horse'
-HORSE_2 = 'horse2'
-SKI = 'ski'
-
 def parse_arguments():
     parser = argparse.ArgumentParser()
     parser.add_argument("project_name", help="Set project name", type=str)

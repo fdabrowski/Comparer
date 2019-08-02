@@ -1,5 +1,6 @@
 import argparse
 import os
+import time
 
 from label_source import LabelSource
 
@@ -151,6 +152,7 @@ if __name__ == "__main__":
 
     project_name, format = video_name.split('.')
 
+    start_time = time.time()
     print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
     print('====== 1. Prepare ground truth images ======')
     create_main_gt_images()
@@ -158,15 +160,15 @@ if __name__ == "__main__":
     create_modified_gt_images()
 
     print('====== 2. Prepare labels ======')
-    create_labels()
-    copy_labels_to_modified()
+    # create_labels()
+    # copy_labels_to_modified()
 
     print('====== 3. Run YOLO ======')
-    run_yolo_for_all
+    run_yolo_for_all()
     print('====== 3. End YOLO ======')
 
     print('====== 4. Run SSD ======')
-    run_ssd_for_all
+    run_ssd_for_all()
     print('====== 4. End SSD ======')
 
     print('====== 5. Run Faster R-CNN ======')
@@ -174,7 +176,9 @@ if __name__ == "__main__":
     print('====== 5. End Faster R-CNN ======')
 
     print('====== 6. Run Object Detection Comparer ======')
-    run_comparer_for_all()
+    # run_comparer_for_all()
     print('====== 6. End Object Detection Comparer ======')
     print('=========================== WHOOOOOLE PROCESS ENDED ===========================')
+    e = int(time.time() - start_time)
+    print('Total time: ' + '{:02d}:{:02d}:{:02d}'.format(e // 3600, (e % 3600 // 60), e % 60))
 

@@ -38,8 +38,8 @@ if __name__ == "__main__":
     project_name = args.__dict__['project_name']
     modificator = ModificatorType[args.__dict__['modificator']]
     video_name = modificator.value + '_' + project_name
-    image_folder = 'ground_truth_frames/' + project_name + '/frames'
-    video_dir = '/Users/filipdabrowski/Documents/video/out/' + project_name + '/' + video_name + '/'
+    image_folder = 'ground_truth_frames/' + project_name + '/' + project_name + '/frames'
+    video_dir = '/Users/filipdabrowski/Documents/video/'
     video_path = video_dir + video_name + '.avi'
     create_dir_if_not_exists()
     images = [img for img in os.listdir(image_folder) if img.endswith(".jpg")]
@@ -51,7 +51,7 @@ if __name__ == "__main__":
     if modificator == ModificatorType.dark:
         create_modified_video(0.1, 0.5)
     elif modificator == ModificatorType.light:
-        create_modified_video(2, 100)
+        create_modified_video(2, 150)
     elif modificator == ModificatorType.blur:
         create_blur_video()
 
