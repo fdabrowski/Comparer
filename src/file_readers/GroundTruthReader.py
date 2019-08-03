@@ -3,8 +3,8 @@ from src.file_readers.FileReader import FileReader
 
 
 class GroundTruthReader(FileReader):
-    def __init__(self, project_name, file_name):
-        super(GroundTruthReader, self).__init__(project_name, file_name, 'ground_truth_frames')
+    def __init__(self, project_name, video_name, file_name):
+        super(GroundTruthReader, self).__init__(project_name, video_name, file_name, 'ground_truth_frames')
 
     def getBoundingBoxes(self):
         file = self.open_box_file()

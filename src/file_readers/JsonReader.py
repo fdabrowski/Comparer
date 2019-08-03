@@ -4,8 +4,8 @@ from src.file_readers.FileReader import FileReader
 
 
 class JsonReader(FileReader):
-    def __init__(self, project_name, file_name, folderName):
-        super(JsonReader, self).__init__(project_name, file_name, folderName)
+    def __init__(self, project_name, video_name, file_name, folderName):
+        super(JsonReader, self).__init__(project_name, video_name, file_name, folderName)
 
     def getBoundingBoxes(self):
         file = self.open_box_file()

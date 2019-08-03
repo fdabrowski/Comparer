@@ -17,31 +17,8 @@ from src.utils.FinalStatistics import avarage_statistics, save_final_statistics
 from src.utils.boxColors import BoxColors
 from src.utils.boxDrawer import draw_predicted_objects, show_confidence
 
-# TRAFFIC = 'traffic'
-# NIGHT_STREET = 'night_street'
-# ANIMALS = 'animals'
-# PERSON = 'person'
-# GLASS = 'glass'
-# FRUITS = 'fruits'
-# BIKE = 'bike'
-# HORSE = 'horse'
-# HORSE_2 = 'horse2'
-# SKI = 'ski'
-#
-# DARK = 'dark_'
-# LIGHT = 'light_'
-# BLUR = 'blur_'
-# # AVAILABLE_CLASSES = ['bird', 'dog', 'cat']
-# # AVAILABLE_CLASSES = ['person', 'car']
-# # AVAILABLE_CLASSES = ['cup', 'wine glass', 'bottle']
-# AVAILABLE_CLASSES = ['person']
-# # AVAILABLE_CLASSES = ['person', 'bicycle']
-# available_classes = ['skis', 'person']
-
-
-
 def process_yolo(index, imgcv, imgCopy):
-    yolo_reader = JsonReader(video_name, sorted_yolo_file_list[index], 'yolo')
+    yolo_reader = JsonReader(project_name, video_name, sorted_yolo_file_list[index], 'yolo')
     yolo_bounding_boxes = yolo_reader.getBoundingBoxes()
     time = yolo_reader.getTime()
     yolo_bounding_boxes = list(filter(lambda x: x.object_class in available_classes, yolo_bounding_boxes))
@@ -54,7 +31,7 @@ def process_yolo(index, imgcv, imgCopy):
 
 
 def process_ssd(index, imgcv, imgCopy):
-    ssd_reader = JsonReader(video_name, sorted_ssd_file_list[index], 'ssd')
+    ssd_reader = JsonReader(project_name, video_name, sorted_ssd_file_list[index], 'ssd')
     ssd_bounding_box = ssd_reader.getBoundingBoxes()
     time = ssd_reader.getTime()
     ssd_bounding_box = list(filter(lambda x: x.object_class in available_classes, ssd_bounding_box))
@@ -78,14 +55,14 @@ def save_singular_image(imgcv, index, algName):
 
 
 def process_ground_truth(index, imgcv):
-    gt_reader = GroundTruthReader(video_name, sorted_gt_file_list[index])
+    gt_reader = GroundTruthReader(project_name, video_name, sorted_gt_file_list[index])
     gt_bounding_boxes = gt_reader.getBoundingBoxes()
     draw_predicted_objects(gt_bounding_boxes, imgcv, BoxColors.GT_COLOR, 2)
     return gt_bounding_boxes
 
 
 def process_mask_rcnn(index, imgcv, imgCopy):
-    rcnn_reader = JsonReader(video_name, sorted_mask_rcnn_file_list[index], 'mask_RCNN')
+    rcnn_reader = JsonReader(project_name, video_name, sorted_mask_rcnn_file_list[index], 'mask_RCNN')
     rcnn_bounding_boxes = rcnn_reader.getBoundingBoxes()
     time = rcnn_reader.getTime()
     rcnn_bounding_boxes = list(filter(lambda x: x.object_class in available_classes, rcnn_bounding_boxes))
@@ -131,9 +108,9 @@ if __name__ == "__main__":
 
     GT_FRAMES = 'ground_truth_frames/' + project_name + '/' + video_name + '/frames'
     GT_BOXES = 'ground_truth_frames/' + project_name + '/' + video_name + '/boxes'
-    MASK_RCNN_BOXES = 'mask_RCNN/' + video_name + '/boxes'
-    SSD_BOXES = 'ssd/' + video_name + '/boxes'
-    YOLO_BOXES = 'yolo/' + video_name + '/boxes'
+    MASK_RCNN_BOXES = 'mask_RCNN/' + project_name + '/' + video_name + '/boxes'
+    SSD_BOXES = 'ssd/' + project_name + '/' + video_name + '/boxes'
+    YOLO_BOXES = 'yolo/' + project_name + '/' + video_name + '/boxes'
     OUT = 'out/' + project_name + '/' + video_name
     FINAL_STATISTICS = OUT + '/statistics'
 
