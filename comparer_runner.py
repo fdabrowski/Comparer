@@ -79,55 +79,55 @@ def copy_labels_to_modified():
     os.system(copy_blur_script)
 
 
-def run_yolo(project_name, extension):
+def run_yolo(project_name, video_name, extension):
     yolo_script = 'cd /Users/filipdabrowski/Documents/git/darkflow/ && ' \
                   'python3 flow --model cfg/yolo.cfg --load bin/yolo.weights ' \
                   '--demo /Users/filipdabrowski/Documents/video/' + project_name + '.' + extension + \
-                  ' --saveVideo --projectName ' + project_name
+                  ' --saveVideo --projectName ' + project_name + '--videoName' + video_name
     print(yolo_script)
     os.system(yolo_script)
 
 def run_ssd(project_name, extension):
     ssd_script = 'cd /Users/filipdabrowski/Documents/git/ssd_keras/ && ' \
-                  'python3 sssd_coco.py ' +project_name + ' ' + extension
+                  'python3 sssd_coco.py ' + project_name + ' ' + video_name + ' ' + extension
     print(ssd_script)
     os.system(ssd_script)
 
-def run_faster_rcnn(project_name, extension):
+def run_faster_rcnn(project_name, video_name, extension):
     mask_rcnn_script = 'cd /Users/filipdabrowski/Documents/git/Mask_RCNN/samples/ && ' \
-                  'python3 mask_rcnn.py ' +project_name + ' ' + extension
+                  'python3 mask_rcnn.py ' + project_name + ' ' + video_name + ' ' + extension
     print(mask_rcnn_script)
     os.system(mask_rcnn_script)
 
 def run_yolo_for_all():
     print('=== 3.1 Start yolo for standard video')
-    run_yolo(project_name, format)
+    run_yolo(project_name, project_name, format)
     print('=== 3.2 Start yolo for dark video')
-    run_yolo('dark_' + project_name, 'avi')
+    run_yolo(project_name, 'dark_' + project_name, 'avi')
     print('=== 3.3 Start yolo for light video')
-    run_yolo('light_' + project_name, 'avi')
+    run_yolo(project_name, 'light_' + project_name, 'avi')
     print('=== 3.4 Start yolo for blur video')
-    run_yolo('blur_' + project_name, 'avi')
+    run_yolo(project_name, 'blur_' + project_name, 'avi')
 
 def run_mask_rcnn_for_all():
     print('=== 5.1 Start Faster R-CNN for standard video')
-    run_faster_rcnn(project_name, format)
+    run_faster_rcnn(project_name, project_name, format)
     print('=== 5.2 Start Faster R-CNN for dark video')
-    run_faster_rcnn('dark_' + project_name, 'avi')
+    run_faster_rcnn(project_name, 'dark_' + project_name, 'avi')
     print('=== 5.3 Start Faster R-CNN for light video')
-    run_faster_rcnn('light_' + project_name, 'avi')
+    run_faster_rcnn(project_name, 'light_' + project_name, 'avi')
     print('=== 5.4 Start Faster R-CNN for blur video')
-    run_faster_rcnn('blur_' + project_name, 'avi')
+    run_faster_rcnn(project_name, 'blur_' + project_name, 'avi')
 
 def run_ssd_for_all():
     print('=== 4.1 Start SSD for standard video')
-    run_ssd(project_name, format)
+    run_ssd(project_name, project_name, format)
     print('=== 4.2 Start SSD for dark video')
-    run_ssd('dark_' + project_name, 'avi')
+    run_ssd(project_name, 'dark_' + project_name, 'avi')
     print('=== 4.3 Start SSD for light video')
-    run_ssd('light_' + project_name, 'avi')
+    run_ssd(project_name, 'light_' + project_name, 'avi')
     print('=== 4.4 Start SSD for blur video')
-    run_ssd('blur_' + project_name, 'avi')
+    run_ssd(project_name, 'blur_' + project_name, 'avi')
 
 def run_comparer_for_all():
     print('=== 6.1 Statistics for standard video')
@@ -153,16 +153,16 @@ if __name__ == "__main__":
     project_name, format = video_name.split('.')
 
     start_time = time.time()
-    print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
-    print('====== 1. Prepare ground truth images ======')
+    # print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
+    # print('====== 1. Prepare ground truth images ======')
     # create_main_gt_images()
     # create_modified_videos()
     # create_modified_gt_images()
-
-    print('====== 2. Prepare labels ======')
-    create_labels()
-    copy_labels_to_modified()
-
+    #
+    # print('====== 2. Prepare labels ======')
+    # create_labels()
+    # copy_labels_to_modified()
+    #
     # print('====== 3. Run YOLO ======')
     # run_yolo_for_all()
     # print('====== 3. End YOLO ======')
