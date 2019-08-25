@@ -24,7 +24,8 @@ def save_final_statistics(dir: str, statistics: Statistics):
         'mAP': statistics.mAP,
         'recall': statistics.recall,
         'precision': statistics.precision,
-        'time': statistics.time
+        'time': statistics.time,
+        'class_recall': list(map(lambda x: {'class_name': x.class_name, 'recall': x.recall}, statistics.class_recall))
     })
     if not os.path.exists(dir):
         os.makedirs(dir)

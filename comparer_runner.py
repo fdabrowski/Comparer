@@ -163,17 +163,17 @@ if __name__ == "__main__":
     create_labels()
     copy_labels_to_modified()
 
-    print('====== 3. Run YOLO ======')
-    run_yolo_for_all()
-    print('====== 3. End YOLO ======')
-
-    print('====== 4. Run SSD ======')
-    run_ssd_for_all()
-    print('====== 4. End SSD ======')
-
-    print('====== 5. Run Faster R-CNN ======')
-    run_mask_rcnn_for_all()
-    print('====== 5. End Faster R-CNN ======')
+    # print('====== 3. Run YOLO ======')
+    # run_yolo_for_all()
+    # print('====== 3. End YOLO ======')
+    #
+    # print('====== 4. Run SSD ======')
+    # run_ssd_for_all()
+    # print('====== 4. End SSD ======')
+    #
+    # print('====== 5. Run Faster R-CNN ======')
+    # run_mask_rcnn_for_all()
+    # print('====== 5. End Faster R-CNN ======')
 
     print('====== 6. Run Object Detection Comparer ======')
     run_comparer_for_all()
