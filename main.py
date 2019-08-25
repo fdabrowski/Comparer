@@ -75,9 +75,9 @@ def process_mask_rcnn(index, imgcv, imgCopy):
 
 
 def save_final_results(yoloAllStatistics, maskRcnnAllStatistics, ssdAllStatistics):
-    yolo_final_statistics = avarage_statistics(yoloAllStatistics)
-    mask_rcnn_final_statistics = avarage_statistics(maskRcnnAllStatistics)
-    ssd_final_statistics = avarage_statistics(ssdAllStatistics)
+    yolo_final_statistics = avarage_statistics(yoloAllStatistics, available_classes)
+    mask_rcnn_final_statistics = avarage_statistics(maskRcnnAllStatistics, available_classes)
+    ssd_final_statistics = avarage_statistics(ssdAllStatistics, available_classes)
     save_final_statistics(FINAL_STATISTICS, yolo_final_statistics)
     save_final_statistics(FINAL_STATISTICS, mask_rcnn_final_statistics)
     save_final_statistics(FINAL_STATISTICS, ssd_final_statistics)
