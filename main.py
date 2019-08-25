@@ -83,9 +83,9 @@ def save_final_results(yoloAllStatistics, maskRcnnAllStatistics, ssdAllStatistic
     save_final_statistics(FINAL_STATISTICS, ssd_final_statistics)
 
 
-def save_single_result(dir, pairs, iouResult, fileName):
+def save_single_result(dir, pairs, iouResult, fileName, statistics):
     resultSaver = ResultSaver(OUT + dir)
-    resultSaver.save_result(pairs, iouResult, fileName)
+    resultSaver.save_result(pairs, iouResult, fileName, statistics)
 
 
 def create_pairs(gt_bounding_boxes, predict_bounding_boxes):
@@ -150,8 +150,8 @@ if __name__ == "__main__":
         ssd_bounding_boxes, ssdTime = process_ssd(index, imgcv, imgcv_ssd)
 
         yolo_pairs = create_pairs(gt_bounding_boxes, yolo_bounding_boxes)
-        mask_rcnn_pairs = create_pairs(gt_bounding_boxes, rcnn_bounding_boxes)
         ssd_pairs = create_pairs(gt_bounding_boxes, ssd_bounding_boxes)
+        mask_rcnn_pairs = create_pairs(gt_bounding_boxes, rcnn_bounding_boxes)
 
         iou_provider = IoUProvider()
         iou_yolo_result = iou_provider.getIouResult(yolo_pairs)
@@ -160,19 +160,23 @@ if __name__ == "__main__":
 
         yolo_statistics_provider = StatisticsProvider('yolo', gt_bounding_boxes, yolo_bounding_boxes, yolo_pairs,
                                                     iou_yolo_result, yoloTime)
-        yolo_all_statistics.append(yolo_statistics_provider.returnStatistics())
+        yolo_statistics = yolo_statistics_provider.returnStatistics()
+        yolo_all_statistics.append(yolo_statistics)
 
         mask_rcnn_statistics_provider = StatisticsProvider('maskRCNN', gt_bounding_boxes, rcnn_bounding_boxes, mask_rcnn_pairs,
                                                         iou_mask_rcnn_result, rcnnTime)
-        mask_rcnn_all_statistics.append(mask_rcnn_statistics_provider.returnStatistics())
+        mask_rcnn_statistics = mask_rcnn_statistics_provider.returnStatistics()
+        mask_rcnn_all_statistics.append(mask_rcnn_statistics)
 
         ssd_statistics_provider = StatisticsProvider('ssd', gt_bounding_boxes, ssd_bounding_boxes, ssd_pairs,
                                                    iou_ssd_result, ssdTime)
-        ssd_all_statistics.append(ssd_statistics_provider.returnStatistics())
+        ssd_statistics = ssd_statistics_provider.returnStatistics()
+        ssd_all_statistics.append(ssd_statistics)
 
-        save_single_result('/yolo/iou', yolo_pairs, iou_yolo_result, fileName)
-        save_single_result('/mask_RCNN/iou', mask_rcnn_pairs, iou_mask_rcnn_result, fileName)
-        save_single_result('/ssd/iou', ssd_pairs, iou_ssd_result, fileName)
+        save_single_result('/yolo/iou', yolo_pairs, iou_yolo_result, fileName, yolo_statistics)
+        save_single_result('/mask_RCNN/iou', mask_rcnn_pairs, iou_mask_rcnn_result, fileName, mask_rcnn_statistics)
+        save_single_result('/ssd/iou', ssd_pairs, iou_ssd_result, fileName, ssd_statistics)
+
         save_image(imgcv, index)
 
     save_final_results(yolo_all_statistics, mask_rcnn_all_statistics, ssd_all_statistics)

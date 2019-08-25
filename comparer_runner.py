@@ -82,12 +82,12 @@ def copy_labels_to_modified():
 def run_yolo(project_name, video_name, extension):
     yolo_script = 'cd /Users/filipdabrowski/Documents/git/darkflow/ && ' \
                   'python3 flow --model cfg/yolo.cfg --load bin/yolo.weights ' \
-                  '--demo /Users/filipdabrowski/Documents/video/' + project_name + '.' + extension + \
-                  ' --saveVideo --projectName ' + project_name + '--videoName' + video_name
+                  '--demo /Users/filipdabrowski/Documents/video/' + video_name + '.' + extension + \
+                  ' --saveVideo --projectName ' + project_name + ' --videoName ' + video_name
     print(yolo_script)
     os.system(yolo_script)
 
-def run_ssd(project_name, extension):
+def run_ssd(project_name, video_name, extension):
     ssd_script = 'cd /Users/filipdabrowski/Documents/git/ssd_keras/ && ' \
                   'python3 sssd_coco.py ' + project_name + ' ' + video_name + ' ' + extension
     print(ssd_script)
@@ -139,7 +139,7 @@ def run_comparer_for_all():
     print('=== 6.4 Statistics for blur video')
     run_object_comparer(project_name, 'blur_' + project_name)
 
-def run_object_comparer(project_name, video_name):
+def  run_object_comparer(project_name, video_name):
     comparer_script = 'python3 main.py ' + project_name + ' ' + video_name + ' --available_classes ' + ' '.join(available_classes)
     print(comparer_script)
     os.system(comparer_script)
@@ -153,27 +153,27 @@ if __name__ == "__main__":
     project_name, format = video_name.split('.')
 
     start_time = time.time()
-    # print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
-    # print('====== 1. Prepare ground truth images ======')
-    # create_main_gt_images()
-    # create_modified_videos()
-    # create_modified_gt_images()
-    #
-    # print('====== 2. Prepare labels ======')
-    # create_labels()
-    # copy_labels_to_modified()
-    #
-    # print('====== 3. Run YOLO ======')
-    # run_yolo_for_all()
-    # print('====== 3. End YOLO ======')
-    #
-    # print('====== 4. Run SSD ======')
-    # run_ssd_for_all()
-    # print('====== 4. End SSD ======')
-    #
-    # print('====== 5. Run Faster R-CNN ======')
-    # run_mask_rcnn_for_all()
-    # print('====== 5. End Faster R-CNN ======')
+    print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
+    print('====== 1. Prepare ground truth images ======')
+    create_main_gt_images()
+    create_modified_videos()
+    create_modified_gt_images()
+
+    print('====== 2. Prepare labels ======')
+    create_labels()
+    copy_labels_to_modified()
+
+    print('====== 3. Run YOLO ======')
+    run_yolo_for_all()
+    print('====== 3. End YOLO ======')
+
+    print('====== 4. Run SSD ======')
+    run_ssd_for_all()
+    print('====== 4. End SSD ======')
+
+    print('====== 5. Run Faster R-CNN ======')
+    run_mask_rcnn_for_all()
+    print('====== 5. End Faster R-CNN ======')
 
     print('====== 6. Run Object Detection Comparer ======')
     run_comparer_for_all()

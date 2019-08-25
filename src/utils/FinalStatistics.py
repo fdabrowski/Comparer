@@ -26,3 +26,4 @@ def save_final_statistics(dir: str, statistics: Statistics):
         os.makedirs(dir)
     with open(dir + '/' + statistics.alghorithmName + '.json', 'w+') as outfile:
         json.dump(data, outfile)
+
