@@ -7,6 +7,7 @@ from os.path import isfile, join
 import cv2
 import natsort
 
+from graph_creator import get_recall_data
 from src.IoUProvider import IoUProvider
 from src.PairBox import PairBox
 from src.ResultSaver import ResultSaver
@@ -179,5 +180,8 @@ if __name__ == "__main__":
 
         save_image(imgcv, index)
 
+    get_recall_data(yolo_all_statistics, available_classes)
+    get_recall_data(ssd_all_statistics, available_classes)
+    get_recall_data(mask_rcnn_all_statistics, available_classes)
     save_final_results(yolo_all_statistics, mask_rcnn_all_statistics, ssd_all_statistics)
 
