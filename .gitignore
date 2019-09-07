@@ -113,3 +113,8 @@ venv.bak/
 # avoid pycharm files
 .idea
 
+out/
+ground_truth_frames/
+mask_RCNN/
+ssd/
+yolo/

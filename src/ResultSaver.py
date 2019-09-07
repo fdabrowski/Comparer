@@ -6,8 +6,9 @@ class ResultSaver():
     def __init__(self, dir) -> None:
         self.dir = self.__setDir(dir)
 
-    def save_result(self, pairs, iouResults, fileName: str) -> None:
+    def save_result(self, pairs, iouResults, fileName: str, statistics) -> None:
         data = {}
+        data['statistics'] = []
         data['frame'] = []
         for pair, iouResult in zip(pairs, iouResults):
             data['frame'].append({
@@ -15,6 +16,14 @@ class ResultSaver():
                 'predictedBox': self.toJSON(pair[1]),
                 'iou': iouResult
             })
+        data['statistics'].append({
+            'alghorithmName': statistics.alghorithmName,
+            'class_recall': list(map(lambda x: {'class_name': x.class_name, 'recall': x.recall}, statistics.class_recall)),
+            'mAp': statistics.mAP,
+            'precision': statistics.precision,
+            'recall': statistics.recall,
+            'time': statistics.time
+        })
         with open(self.dir + '/' + fileName.replace('jpg', 'json'), 'w+') as outfile:
             json.dump(data, outfile)
 

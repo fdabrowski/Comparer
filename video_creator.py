@@ -51,7 +51,7 @@ if __name__ == "__main__":
     if modificator == ModificatorType.dark:
         create_modified_video(0.1, 0.5)
     elif modificator == ModificatorType.light:
-        create_modified_video(2, 150)
+        create_modified_video(1, 150)
     elif modificator == ModificatorType.blur:
         create_blur_video()
 
