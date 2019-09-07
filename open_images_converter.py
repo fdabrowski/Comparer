@@ -42,8 +42,3 @@ for index in range(0, len(sorted_all_files)):
                        + str(int(float(boxList[3]) * width_rate)) + ' '
                        + str(int(float(boxList[4]) * height_rate)) + ' '
                        + boxList[0] + '\n')
-        # new_file.write(boxList[1]+ ' '
-        #                + boxList[2] + ' '
-        #                + boxList[3] + ' '
-        #                + boxList[4] + ' '
-        #                + boxList[0] + '\n')

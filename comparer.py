@@ -180,8 +180,8 @@ if __name__ == "__main__":
 
         save_image(imgcv, index)
 
-    get_recall_data(yolo_all_statistics, available_classes)
-    get_recall_data(ssd_all_statistics, available_classes)
-    get_recall_data(mask_rcnn_all_statistics, available_classes)
+    get_recall_data(yolo_all_statistics, available_classes, 'YOLO')
+    get_recall_data(ssd_all_statistics, available_classes, 'SSD')
+    get_recall_data(mask_rcnn_all_statistics, available_classes, 'Faster RCNN')
     save_final_results(yolo_all_statistics, mask_rcnn_all_statistics, ssd_all_statistics)
 

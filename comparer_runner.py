@@ -52,7 +52,7 @@ def create_modified_gt_images():
 
 def create_labels():
     if label_source == LabelSource.cvat:
-        cvat_script = "python3 xml_converter.xml.py " + project_name
+        cvat_script = "python3 xml_converter.py " + project_name
         os.system(cvat_script)
         print(cvat_script)
 
@@ -140,7 +140,7 @@ def run_comparer_for_all():
     # run_object_comparer(project_name, 'blur_' + project_name)
 
 def  run_object_comparer(project_name, video_name):
-    comparer_script = 'python3 main.py ' + project_name + ' ' + video_name + ' --available_classes ' + ' '.join(available_classes)
+    comparer_script = 'python3 comparer.py ' + project_name + ' ' + video_name + ' --available_classes ' + ' '.join(available_classes)
     print(comparer_script)
     os.system(comparer_script)
 
@@ -156,24 +156,24 @@ if __name__ == "__main__":
     print('=========================== WHOOOOOLE PROCESS STARTED ===========================')
     print('====== 1. Prepare ground truth images ======')
     create_main_gt_images()
-    # create_modified_videos()
-    # create_modified_gt_images()
+    create_modified_videos()
+    create_modified_gt_images()
 
     print('====== 2. Prepare labels ======')
-    # create_labels()
-    # copy_labels_to_modified()
+    create_labels()
+    copy_labels_to_modified()
 
-    # print('====== 3. Run YOLO ======')
-    # run_yolo_for_all()
-    # print('====== 3. End YOLO ======')
-    #
-    # print('====== 4. Run SSD ======')
-    # run_ssd_for_all()
-    # print('====== 4. End SSD ======')
-    #
-    # print('====== 5. Run Faster R-CNN ======')
+    print('====== 3. Run YOLO ======')
+    run_yolo_for_all()
+    print('====== 3. End YOLO ======')
+
+    print('====== 4. Run SSD ======')
+    run_ssd_for_all()
+    print('====== 4. End SSD ======')
+
+    print('====== 5. Run Faster R-CNN ======')
     # run_mask_rcnn_for_all()
-    # print('====== 5. End Faster R-CNN ======')
+    print('====== 5. End Faster R-CNN ======')
 
     print('====== 6. Run Object Detection Comparer ======')
     run_comparer_for_all()

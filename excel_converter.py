@@ -34,7 +34,7 @@ writer = pandas.ExcelWriter(excel_file, engine='openpyxl')
 writer.book = load_workbook(excel_file)
 writer.sheets = {ws.title: ws for ws in writer.book.worksheets}
 # for sub_dir in dirs:
-sub_dir = '/birds'
+sub_dir = '/drone'
 if not sub_dir.startswith('.'):
     sub_dirs = os.listdir(out_dir + sub_dir)
     for video_name in sub_dirs:
