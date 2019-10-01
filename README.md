@@ -148,7 +148,7 @@ python3 frames_creator.py project_name video_name format
 Aby stworzyć niezmieniony zbiór klatek na podstawie filmu nazwa projektu oraz wideo musi być taka sama. Jeżeli chcemy utworzyć zmodyfikowany obraz musimy dodać odpowiedni przedrostek
 ```
 przyciemniony obraz: video_name = dark_project_name
-rozjaśniony obraz: video_name = dark_project_name
+rozjaśniony obraz: video_name = light_project_name
 rozmazany obraz: video_name = blur_project_name
 ```
 np.
